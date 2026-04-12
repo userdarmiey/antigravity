@@ -1,0 +1,128 @@
+"use client";
+import React from 'react';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { Send, MessageSquare, Mail, Terminal } from 'lucide-react';
+
+export default function ContactPage() {
+  return (
+    <div className="bg-background min-h-screen text-foreground pt-32 pb-24 overflow-hidden relative">
+      <div className="fixed inset-0 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-accent/5 blur-[150px] rounded-full pointer-events-none" />
+
+      <div className="max-w-4xl mx-auto px-6 relative z-10">
+        {/* Page Header */}
+        <div className="mb-20">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex items-center gap-3 mb-4"
+          >
+            <div className="w-2 h-2 rounded-full bg-accent animate-pulse shadow-[0_0_10px_var(--accent)]" />
+            <span className="text-accent font-mono text-[10px] tracking-[0.4em] font-black uppercase">Channel: Secure Uplink</span>
+          </motion.div>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-6xl md:text-8xl font-black tracking-tighter uppercase leading-none"
+          >
+            Contact <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">Protocol</span>
+          </motion.h1>
+        </div>
+
+        <div className="grid lg:grid-cols-[1fr_350px] gap-12">
+          {/* Contact Terminal */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2 }}
+            className="bg-surface border border-border p-8 md:p-12 rounded-[2.5rem] backdrop-blur-xl shadow-2xl"
+          >
+             <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+                <div className="grid md:grid-cols-2 gap-8">
+                   <div className="flex flex-col gap-2">
+                      <label className="text-[10px] font-black uppercase tracking-widest text-foreground/40">Identity</label>
+                      <input 
+                        type="text" 
+                        placeholder="NAME / ALIAS"
+                        className="bg-background/50 border border-border rounded-xl px-6 py-4 text-sm font-mono focus:outline-none focus:border-accent transition-colors"
+                      />
+                   </div>
+                   <div className="flex flex-col gap-2">
+                      <label className="text-[10px] font-black uppercase tracking-widest text-foreground/40">Transmission Address</label>
+                      <input 
+                        type="email" 
+                        placeholder="EMAIL@GRID.COM"
+                        className="bg-background/50 border border-border rounded-xl px-6 py-4 text-sm font-mono focus:outline-none focus:border-accent transition-colors"
+                      />
+                   </div>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                   <label className="text-[10px] font-black uppercase tracking-widest text-foreground/40">Matrix Subject</label>
+                   <select className="bg-background/50 border border-border rounded-xl px-4 py-4 text-sm font-mono focus:outline-none focus:border-accent appearance-none cursor-pointer">
+                      <option className="bg-background">DEPLOYMENT STATUS</option>
+                      <option className="bg-background">RE-ENTRY REQUEST</option>
+                      <option className="bg-background">GENERAL TELEMETRY</option>
+                      <option className="bg-background">Echelon APPLICATION</option>
+                   </select>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                   <label className="text-[10px] font-black uppercase tracking-widest text-foreground/40">Signal Content</label>
+                   <textarea 
+                     rows={5}
+                     placeholder="INITIATE MESSAGE..."
+                     className="bg-background/50 border border-border rounded-xl px-6 py-4 text-sm font-mono focus:outline-none focus:border-accent transition-colors resize-none"
+                   />
+                </div>
+
+                <button 
+                  className="w-full bg-accent text-white py-5 rounded-full text-[11px] font-black uppercase tracking-[0.4em] hover:bg-white hover:text-black transition-all shadow-xl shadow-accent/20 flex items-center justify-center gap-4 group"
+                >
+                   Transmit Signal
+                   <Send className="w-4 h-4 transition-transform group-hover:translate-x-2 group-hover:-translate-y-2" />
+                </button>
+             </form>
+          </motion.div>
+
+          {/* Sidebar Metrics */}
+          <div className="space-y-8">
+             <motion.div 
+               initial={{ opacity: 0, x: 30 }}
+               animate={{ opacity: 1, x: 0 }}
+               transition={{ delay: 0.4 }}
+               className="bg-surface border border-border p-8 rounded-[2.5rem] backdrop-blur-xl"
+             >
+                <div className="flex items-center gap-4 mb-6">
+                   <Terminal className="w-5 h-5 text-accent" />
+                   <h3 className="text-sm font-black uppercase tracking-widest">Global HQ</h3>
+                </div>
+                <div className="space-y-4 text-nebula text-xs font-mono leading-relaxed">
+                   <p>Sector-7 // Void District</p>
+                   <p>Echelon Tower, Level 42</p>
+                   <p>Neo-London // GRID-01</p>
+                </div>
+             </motion.div>
+
+             <motion.div 
+               initial={{ opacity: 0, x: 30 }}
+               animate={{ opacity: 1, x: 0 }}
+               transition={{ delay: 0.5 }}
+               className="bg-surface border border-border p-8 rounded-[2.5rem] backdrop-blur-xl"
+             >
+                <div className="flex items-center gap-4 mb-6">
+                   <Mail className="w-5 h-5 text-accent" />
+                   <h3 className="text-sm font-black uppercase tracking-widest">Connect</h3>
+                </div>
+                <div className="space-y-4 text-nebula text-xs font-mono">
+                   <p className="hover:text-accent transition-colors cursor-pointer">UPLINK@FITANDFAB.ARC</p>
+                   <p className="hover:text-accent transition-colors cursor-pointer">+44 [VOID] 00 11</p>
+                </div>
+             </motion.div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

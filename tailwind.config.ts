@@ -1,0 +1,30 @@
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        nebula: "var(--muted)",
+        accent: "var(--accent)",
+        surface: "var(--card)",
+        border: "var(--border)",
+      },
+      fontFamily: {
+        sans: ["var(--font-inter)", "sans-serif"],
+        heading: ["var(--font-inter)", "sans-serif"],
+      },
+      animation: {
+        'spin-slow': 'spin 8s linear infinite',
+      },
+    },
+  },
+  plugins: [],
+};
+export default config;
