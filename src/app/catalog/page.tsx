@@ -1,4 +1,5 @@
 "use client";
+export const dynamic = 'force-dynamic';
 import React, { useEffect, useState } from 'react';
 import { ProductCard, Product } from '@/components/products/ProductCard';
 import { createClient } from '@/utils/supabase/client';

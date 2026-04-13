@@ -1,4 +1,5 @@
 import { createClient } from '@/utils/supabase/server'
+export const dynamic = 'force-dynamic'
 import { cookies } from 'next/headers'
 
 export default async function Page() {
