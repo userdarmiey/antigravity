@@ -148,6 +148,48 @@ export default function Home() {
       {/* COUNTDOWN LAUNCH SECTION */}
       <LaunchCountdown />
 
+      {/* WHAT THE FAM SAYS - SOCIAL PROOF */}
+      <section className="py-32 bg-surface/20 border-t border-border relative z-10 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col items-center text-center mb-20">
+            <span className="text-accent text-[10px] uppercase tracking-[0.4em] font-black mb-4">Reviews</span>
+            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tight">What the Fam Says</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { name: "Bolaji", text: "Best quality I've seen in a while. The fit is actually crazy.", rating: 5 },
+              { name: "Chidi", text: "Looked better in person than on the site. Arrived in 2 days. 10/10.", rating: 5 },
+              { name: "Seyi", text: "Finally a brand that gets streetwear right in Nigeria. Premium stuff.", rating: 5 }
+            ].map((review, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.2 }}
+                className="bg-surface/40 backdrop-blur-3xl border border-border p-8 rounded-[2rem] hover:border-accent/40 transition-all group"
+              >
+                <div className="flex gap-1 mb-4">
+                  {[...Array(review.rating)].map((_, i) => (
+                    <div key={i} className="w-3 h-3 bg-accent rounded-full" />
+                  ))}
+                </div>
+                <p className="text-foreground/80 font-medium mb-6 leading-relaxed italic">"{review.text}"</p>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-foreground/10 flex items-center justify-center font-black text-[10px]">{review.name[0]}</div>
+                  <span className="text-xs font-black uppercase tracking-widest text-foreground">{review.name}</span>
+                  <div className="ml-auto flex items-center gap-1">
+                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full" />
+                    <span className="text-[8px] font-bold text-green-500 uppercase tracking-widest">Verified User</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* THE PHILOSOPHY SECTION */}
       <motion.section 
         id="philosophy"

@@ -133,27 +133,33 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
           className="flex flex-col justify-center gap-12"
         >
           <div className="flex flex-col gap-6">
-            <span className="text-accent text-xs font-black tracking-[0.5em] uppercase px-4 py-1.5 border border-accent/20 bg-accent/5 rounded-full w-fit">
+            <span className="text-accent text-[10px] font-black tracking-[0.5em] uppercase px-4 py-1.5 border border-accent/20 bg-accent/5 rounded-full w-fit">
               {product.category}
             </span>
-            <h1 className="text-6xl md:text-8xl font-black text-foreground uppercase tracking-tight leading-none italic">
-              {product.name}
-            </h1>
+            <div className="flex flex-col gap-2">
+               <div className="flex items-center gap-2 mb-2">
+                 <div className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse" />
+                 <span className="text-[10px] font-black text-red-500 uppercase tracking-widest">Only 4 left in stock</span>
+               </div>
+               <h1 className="text-6xl md:text-8xl font-black text-foreground uppercase tracking-tight leading-none italic">
+                 {product.name}
+               </h1>
+            </div>
             <div className="flex items-end gap-2">
                <span className="text-4xl font-black text-foreground italic">₦{product.price.toLocaleString()}</span>
-               <span className="text-[10px] text-foreground/30 font-bold uppercase tracking-widest mb-2">Incl. Import Duties</span>
+               <span className="text-[10px] text-foreground/30 font-bold uppercase tracking-widest mb-2">Inclusive of all taxes</span>
             </div>
           </div>
 
           <p className="text-nebula text-lg md:text-xl font-light leading-relaxed max-w-xl">
-            A manifestation of the Gestar Protocol. Engineered with high-performance synthetic materials and precision weaving for the urban echelon. This artifact is designed to resist environmental degradation while maintaining a primal silhouette.
+            This high-quality piece is part of our latest collection. It's built to look great, stay comfortable, and last long. Perfect for your street style.
           </p>
 
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-4">
-              <span className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.4em]">Color Tone Selection</span>
+              <span className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.4em]">Select Color</span>
               <div className="flex gap-4">
-                {['Carbon', 'Void', 'Neon Surge'].map(tone => (
+                {['Black', 'Dark Grey', 'Light Grey'].map(tone => (
                   <button 
                     key={tone} 
                     onClick={() => setSelectedColor(tone)}
@@ -168,7 +174,15 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
             </div>
 
             <div className="flex flex-col gap-4">
-              <span className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.4em]">Size Calibration</span>
+               <div className="flex justify-between items-center max-w-xs">
+                <span className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.4em]">Select Size</span>
+                <button 
+                  onClick={() => alert("Our sizes are true to fit. If you like it baggy, go one size up.")}
+                  className="text-[10px] font-black text-accent uppercase tracking-widest hover:underline"
+                >
+                  Size Guide
+                </button>
+              </div>
               <div className="flex gap-4">
                 {['S', 'M', 'L', 'XL'].map(size => (
                   <button 

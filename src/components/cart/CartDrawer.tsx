@@ -52,6 +52,25 @@ export default function CartDrawer() {
             </div>
             
             <div className="relative z-10 flex-1 overflow-y-auto flex flex-col gap-10 no-scrollbar">
+              {/* Free Shipping Progress */}
+              <div className="flex flex-col gap-3 bg-foreground/5 p-6 rounded-2xl border border-border">
+                <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-foreground/60">
+                  <span>{cartTotal() >= 50000 ? 'Free Shipping Active' : 'Spend More, Ship Free'}</span>
+                  <span>₦50,000</span>
+                </div>
+                <div className="w-full h-1.5 bg-foreground/10 rounded-full overflow-hidden">
+                   <motion.div 
+                     initial={{ width: 0 }}
+                     animate={{ width: `${Math.min((cartTotal() / 50000) * 100, 100)}%` }}
+                     className="h-full bg-accent"
+                   />
+                </div>
+                <p className="text-[9px] font-medium text-foreground/40 uppercase tracking-widest">
+                  {cartTotal() >= 50000 
+                    ? "Nice! You get free shipping on this order." 
+                    : `Add ₦${(50000 - cartTotal()).toLocaleString()} more to get free shipping.`}
+                </p>
+              </div>
               {cart.map(item => (
                 <motion.div 
                    layout 

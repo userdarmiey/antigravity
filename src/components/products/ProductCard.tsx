@@ -25,6 +25,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               {Math.floor((product.price % 5) + 1)}% OFF
             </div>
           </div>
+
+          <div className="absolute bottom-[100px] left-4 z-30 md:bottom-[150px]">
+            <div className="bg-accent/80 backdrop-blur-md text-white px-2 py-0.5 md:px-3 md:py-1 rounded-sm text-[8px] md:text-[10px] font-black tracking-widest uppercase shadow-lg border border-white/10">
+              Limited Drop
+            </div>
+          </div>
           {/* Neon Category Header */}
           <div className="absolute top-4 right-4 md:top-6 md:right-6 z-20">
             <div className="bg-surface/80 backdrop-blur-md px-3 py-1.5 md:px-4 md:py-1.5 rounded-full border border-accent/50 shadow-[0_0_15px_var(--accent)] hidden md:flex">
