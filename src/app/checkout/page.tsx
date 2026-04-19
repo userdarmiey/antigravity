@@ -13,7 +13,7 @@ export default function CheckoutPage() {
     setIsProcessing(true);
     // Simulate payment logic
     setTimeout(() => {
-      alert("System Protocol: Payment Authorized. Shipment Initialized.");
+      alert("Your payment was successful. Your order is on its way!");
       setIsProcessing(false);
     }, 2000);
   };
@@ -35,9 +35,9 @@ export default function CheckoutPage() {
            <div className="flex flex-col gap-2">
               <Link href="/" className="text-blue-400 text-[10px] font-black tracking-[0.4em] uppercase hover:text-white transition-colors flex items-center gap-2 mb-4">
                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
-                 Return to Archive
+                 Back to Shop
               </Link>
-              <h1 className="text-5xl font-black tracking-tighter uppercase leading-none italic">Checkout Terminal</h1>
+              <h1 className="text-5xl font-black tracking-tighter uppercase leading-none italic">Checkout</h1>
            </div>
 
            <div className="bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] p-8 sm:p-10 flex flex-col gap-8 shadow-2xl relative overflow-hidden">
@@ -65,11 +65,11 @@ export default function CheckoutPage() {
                     <span className="text-sm font-bold text-white">${cartTotal().toFixed(2)}</span>
                  </div>
                  <div className="flex justify-between items-center">
-                    <span className="text-[10px] uppercase font-black tracking-[0.4em] text-white/40">Encryption Fee</span>
+                    <span className="text-[10px] uppercase font-black tracking-[0.4em] text-white/40">Processing Fee</span>
                     <span className="text-sm font-bold text-blue-400">$0.00</span>
                  </div>
                  <div className="flex justify-between items-center pt-4">
-                    <span className="text-[12px] uppercase font-black tracking-[0.4em] text-white">Total Payload</span>
+                    <span className="text-[12px] uppercase font-black tracking-[0.4em] text-white">Total</span>
                     <span className="text-3xl font-black text-blue-500 italic shadow-blue-500/20 shadow-sm">${cartTotal().toFixed(2)}</span>
                  </div>
               </div>
@@ -84,7 +84,7 @@ export default function CheckoutPage() {
            >
               <div className="flex items-center gap-4">
                  <div className="w-3 h-3 rounded-full bg-blue-500 animate-pulse shadow-[0_0_15px_rgba(59,130,246,1)]" />
-                 <h2 className="text-[11px] font-black tracking-[0.6em] uppercase text-white">Payment Protocol</h2>
+                 <h2 className="text-[11px] font-black tracking-[0.6em] uppercase text-white">Payment Details</h2>
               </div>
 
               <div className="flex flex-col gap-6">
@@ -99,7 +99,7 @@ export default function CheckoutPage() {
                  </div>
 
                  <div className="flex flex-col gap-2">
-                    <label className="text-[9px] font-black tracking-[0.4em] uppercase text-white/40 ml-4">Card Matrix</label>
+                    <label className="text-[9px] font-black tracking-[0.4em] uppercase text-white/40 ml-4">Card Number</label>
                     <input 
                       type="text" 
                       required 
@@ -142,12 +142,12 @@ export default function CheckoutPage() {
                       <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                       Authorizing...
                    </div>
-                 ) : "Execute Payment"}
+                 ) : "Pay Now"}
               </button>
 
               <div className="flex flex-col items-center gap-4 opacity-30">
                  <div className="w-full h-[1px] bg-white/10" />
-                 <p className="text-[8px] font-mono tracking-widest text-center">ALL DATA ENCRYPTED VIA GESTAR PROTOCOL v1.0.4</p>
+                 <p className="text-[8px] font-mono tracking-widest text-center">YOUR DATA IS SECURE AND ENCRYPTED</p>
               </div>
            </form>
         </div>

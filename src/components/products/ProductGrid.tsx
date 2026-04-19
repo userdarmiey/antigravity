@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ProductCard, Product } from './ProductCard';
 import { useStore } from '@/store/useStore';
 import { createClient } from '@/utils/supabase/client';
+import { playPopSound } from '@/utils/sound';
 
 export default function ProductGrid() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -11,13 +12,15 @@ export default function ProductGrid() {
   
   const searchQuery = useStore((state) => state.searchQuery);
   const addItem = useStore((state) => state.addItem);
-  const toggleCart = useStore((state) => state.toggleCart);
+  const openCart = useStore((state) => state.openCart);
   
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
+  const [notification, setNotification] = useState<{product: Product, size: string, color: string} | null>(null);
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const notificationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const supabase = createClient();
 
   useEffect(() => {
@@ -46,11 +49,23 @@ export default function ProductGrid() {
 
   const handleDeployment = () => {
     if (selectedProduct && selectedSize && selectedColor) {
+      playPopSound();
+      if (notificationTimeoutRef.current) {
+        clearTimeout(notificationTimeoutRef.current);
+      }
+      setNotification({
+        product: selectedProduct,
+        size: selectedSize,
+        color: selectedColor
+      });
       addItem(selectedProduct);
       setSelectedProduct(null);
       setSelectedSize(null);
       setSelectedColor(null);
-      toggleCart();
+      
+      notificationTimeoutRef.current = setTimeout(() => {
+        setNotification(null);
+      }, 5000);
     }
   };
 
@@ -79,7 +94,7 @@ export default function ProductGrid() {
         </div>
         
         {/* Secondary Modular Controls */}
-        <div className="flex gap-4">
+        <div className="hidden md:flex gap-4">
            <button 
              onClick={() => scroll('left')}
              className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-foreground/40 hover:text-accent hover:border-accent transition-all active:scale-95 bg-foreground/5 backdrop-blur-md"
@@ -103,19 +118,19 @@ export default function ProductGrid() {
 
       <div 
         ref={scrollContainerRef}
-        className="flex gap-12 overflow-x-auto no-scrollbar pb-32 snap-x snap-mandatory px-4 -mx-4 items-start scroll-smooth"
+        className="grid grid-cols-2 gap-4 md:flex md:gap-12 md:overflow-x-auto md:no-scrollbar pb-32 md:snap-x md:snap-mandatory px-4 md:-mx-4 items-start md:scroll-smooth"
       >
         {filteredProducts.map((product) => (
           <div 
             key={product.id} 
-            className="snap-start shrink-0 first:ml-4"
+            className="md:snap-start shrink-0 md:first:ml-4"
           >
             <ProductCard product={product} />
           </div>
         ))}
 
         {/* Archival Spacer */}
-        <div className="min-w-[400px] flex items-center justify-center h-[300px]">
+        <div className="hidden md:flex min-w-[400px] items-center justify-center h-[300px]">
           <div className="flex flex-col items-center gap-6 opacity-20">
             <div className="w-16 h-[1px] bg-accent" />
             <span className="text-[10px] font-black tracking-[0.5em] uppercase text-foreground font-mono italic">END OF LINE protocol</span>
@@ -225,11 +240,49 @@ export default function ProductGrid() {
                     : "bg-foreground/5 text-foreground/20 cursor-not-allowed border border-border"
                   }`}
                 >
-                  {selectedSize && selectedColor ? "Initiate Deployment" : "Configure Parameters"}
+                  {selectedSize && selectedColor ? "Add to Cart" : "Select Options"}
                 </button>
               </div>
             </motion.div>
           </div>
+        )}
+      </AnimatePresence>
+
+      {/* Add to Cart Notification */}
+      <AnimatePresence>
+        {notification && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, x: '-50%' }}
+            animate={{ opacity: 1, y: 0, x: '-50%' }}
+            exit={{ opacity: 0, y: 50, x: '-50%' }}
+            className="fixed bottom-8 left-1/2 z-[1500] bg-surface border border-border shadow-2xl shadow-accent/10 rounded-2xl p-4 flex items-center gap-4 min-w-[340px] md:min-w-[400px] backdrop-blur-2xl"
+          >
+            <div className="w-12 h-12 rounded-xl bg-background overflow-hidden shrink-0 border border-border">
+               <img src={notification.product.image} alt={notification.product.name} className="w-full h-full object-cover" />
+            </div>
+            <div className="flex flex-col flex-grow">
+               <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent mb-0.5">Added to Cart</span>
+               <span className="text-sm font-bold text-foreground line-clamp-1">{notification.product.name}</span>
+               <span className="text-[9px] text-foreground/40 font-black uppercase tracking-widest">{notification.size} / {notification.color}</span>
+            </div>
+            <button
+               onClick={() => {
+                 setNotification(null);
+                 openCart();
+               }}
+               className="shrink-0 px-4 py-2.5 bg-foreground text-background text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-accent hover:text-white transition-all shadow-xl active:scale-95"
+            >
+               Proceed to Checkout
+            </button>
+            <button
+               onClick={() => setNotification(null)}
+               className="absolute -top-2 -right-2 w-6 h-6 bg-surface border border-border rounded-full flex items-center justify-center text-foreground/50 hover:text-foreground hover:border-foreground/50 transition-colors shadow-lg z-[1510]"
+            >
+               <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+               </svg>
+            </button>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>

@@ -21,7 +21,7 @@ export default function Header() {
           </svg>
           <input 
             type="text" 
-            placeholder="Scan the blueprint archives..." 
+            placeholder="Search products..." 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-transparent border-none outline-none text-foreground font-mono text-xs py-3 placeholder:text-nebula placeholder:tracking-widest"
@@ -29,8 +29,8 @@ export default function Header() {
         </div>
 
         <nav className="hidden lg:flex gap-12 text-xs uppercase tracking-[0.25em] text-nebula font-medium shrink-0">
-          <Link href="/#products" className="hover:text-foreground transition-colors duration-500 relative group py-2">Catalog</Link>
-          <Link href="/#philosophy" className="hover:text-foreground transition-colors duration-500 relative group py-2">Philosophy</Link>
+          <Link href="/#products" className="hover:text-foreground transition-colors duration-500 relative group py-2">Shop</Link>
+          <Link href="/#philosophy" className="hover:text-foreground transition-colors duration-500 relative group py-2">Our Story</Link>
         </nav>
 
         <div className="flex items-center gap-6">

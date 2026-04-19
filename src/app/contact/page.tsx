@@ -19,14 +19,14 @@ export default function ContactPage() {
             className="flex items-center gap-3 mb-4"
           >
             <div className="w-2 h-2 rounded-full bg-accent animate-pulse shadow-[0_0_10px_var(--accent)]" />
-            <span className="text-accent font-mono text-[10px] tracking-[0.4em] font-black uppercase">Channel: Secure Uplink</span>
+            <span className="text-accent font-mono text-[10px] tracking-[0.4em] font-black uppercase">Get in Touch</span>
           </motion.div>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-6xl md:text-8xl font-black tracking-tighter uppercase leading-none"
           >
-            Contact <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">Protocol</span>
+            Contact <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">Us</span>
           </motion.h1>
         </div>
 
@@ -41,38 +41,38 @@ export default function ContactPage() {
              <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
                 <div className="grid md:grid-cols-2 gap-8">
                    <div className="flex flex-col gap-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-foreground/40">Identity</label>
+                      <label className="text-[10px] font-black uppercase tracking-widest text-foreground/40">Your Name</label>
                       <input 
                         type="text" 
-                        placeholder="NAME / ALIAS"
+                        placeholder="Your name"
                         className="bg-background/50 border border-border rounded-xl px-6 py-4 text-sm font-mono focus:outline-none focus:border-accent transition-colors"
                       />
                    </div>
                    <div className="flex flex-col gap-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-foreground/40">Transmission Address</label>
+                      <label className="text-[10px] font-black uppercase tracking-widest text-foreground/40">Email Address</label>
                       <input 
                         type="email" 
-                        placeholder="EMAIL@GRID.COM"
+                        placeholder="your@email.com"
                         className="bg-background/50 border border-border rounded-xl px-6 py-4 text-sm font-mono focus:outline-none focus:border-accent transition-colors"
                       />
                    </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
-                   <label className="text-[10px] font-black uppercase tracking-widest text-foreground/40">Matrix Subject</label>
+                   <label className="text-[10px] font-black uppercase tracking-widest text-foreground/40">Subject</label>
                    <select className="bg-background/50 border border-border rounded-xl px-4 py-4 text-sm font-mono focus:outline-none focus:border-accent appearance-none cursor-pointer">
-                      <option className="bg-background">DEPLOYMENT STATUS</option>
-                      <option className="bg-background">RE-ENTRY REQUEST</option>
-                      <option className="bg-background">GENERAL TELEMETRY</option>
-                      <option className="bg-background">Echelon APPLICATION</option>
+                      <option className="bg-background">ORDER STATUS</option>
+                      <option className="bg-background">RETURN REQUEST</option>
+                      <option className="bg-background">GENERAL ENQUIRY</option>
+                      <option className="bg-background">BRAND APPLICATION</option>
                    </select>
                 </div>
 
                 <div className="flex flex-col gap-2">
-                   <label className="text-[10px] font-black uppercase tracking-widest text-foreground/40">Signal Content</label>
+                   <label className="text-[10px] font-black uppercase tracking-widest text-foreground/40">Your Message</label>
                    <textarea 
                      rows={5}
-                     placeholder="INITIATE MESSAGE..."
+                     placeholder="How can we help you?"
                      className="bg-background/50 border border-border rounded-xl px-6 py-4 text-sm font-mono focus:outline-none focus:border-accent transition-colors resize-none"
                    />
                 </div>
@@ -80,7 +80,7 @@ export default function ContactPage() {
                 <button 
                   className="w-full bg-accent text-white py-5 rounded-full text-[11px] font-black uppercase tracking-[0.4em] hover:bg-white hover:text-black transition-all shadow-xl shadow-accent/20 flex items-center justify-center gap-4 group"
                 >
-                   Transmit Signal
+                   Send Message
                    <Send className="w-4 h-4 transition-transform group-hover:translate-x-2 group-hover:-translate-y-2" />
                 </button>
              </form>
@@ -99,9 +99,9 @@ export default function ContactPage() {
                    <h3 className="text-sm font-black uppercase tracking-widest">Global HQ</h3>
                 </div>
                 <div className="space-y-4 text-nebula text-xs font-mono leading-relaxed">
-                   <p>Sector-7 // Void District</p>
-                   <p>Echelon Tower, Level 42</p>
-                   <p>Neo-London // GRID-01</p>
+                   <p>123 High Street</p>
+                   <p>London, W1A 1AA</p>
+                   <p>United Kingdom</p>
                 </div>
              </motion.div>
 
@@ -116,8 +116,8 @@ export default function ContactPage() {
                    <h3 className="text-sm font-black uppercase tracking-widest">Connect</h3>
                 </div>
                 <div className="space-y-4 text-nebula text-xs font-mono">
-                   <p className="hover:text-accent transition-colors cursor-pointer">UPLINK@FITANDFAB.ARC</p>
-                   <p className="hover:text-accent transition-colors cursor-pointer">+44 [VOID] 00 11</p>
+                   <p className="hover:text-accent transition-colors cursor-pointer">hello@fitandfab.com</p>
+                   <p className="hover:text-accent transition-colors cursor-pointer">+44 20 0000 0000</p>
                 </div>
              </motion.div>
           </div>

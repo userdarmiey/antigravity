@@ -20,14 +20,14 @@ export default function ShippingPage() {
             className="flex items-center gap-3 mb-4"
           >
             <div className="w-2 h-2 rounded-full bg-accent animate-pulse shadow-[0_0_10px_var(--accent)]" />
-            <span className="text-accent font-mono text-[10px] tracking-[0.4em] font-black uppercase">Operation: Distribution</span>
+            <span className="text-accent font-mono text-[10px] tracking-[0.4em] font-black uppercase">Shipping Info</span>
           </motion.div>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-6xl md:text-8xl font-black tracking-tight uppercase italic leading-[0.9] pb-4"
           >
-            Shipping <br/> <span className="py-2 text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">Operations</span>
+            Shipping <br/> <span className="py-2 text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">& Delivery</span>
           </motion.h1>
         </div>
 
@@ -46,18 +46,18 @@ export default function ShippingPage() {
             </div>
             <div className="space-y-6">
               <p className="text-nebula text-sm leading-relaxed font-mono">
-                All artifacts are dispatched from the central grid within 48 hours of deployment verification.
+                All orders are shipped within 48 hours of payment confirmation.
               </p>
               <div className="grid grid-cols-2 gap-4">
                  <div className="p-4 bg-background border border-border rounded-2xl flex flex-col gap-2">
                     <Truck className="w-5 h-5 text-accent" />
-                    <span className="text-[10px] font-bold uppercase text-foreground/40">Standard Sync</span>
-                    <span className="font-bold text-white">5-7 Cycles</span>
+                    <span className="text-[10px] font-bold uppercase text-foreground/40">Standard Delivery</span>
+                    <span className="font-bold text-white">5-7 Working Days</span>
                  </div>
                  <div className="p-4 bg-background border border-border rounded-2xl flex flex-col gap-2">
                     <ShieldCheck className="w-5 h-5 text-accent" />
-                    <span className="text-[10px] font-bold uppercase text-foreground/40">Priority Line</span>
-                    <span className="font-bold text-white">2-3 Cycles</span>
+                    <span className="text-[10px] font-bold uppercase text-foreground/40">Express Delivery</span>
+                    <span className="font-bold text-white">2-3 Working Days</span>
                  </div>
               </div>
             </div>
@@ -73,11 +73,11 @@ export default function ShippingPage() {
             </div>
             <div className="space-y-4">
               <p className="text-nebula text-sm leading-relaxed font-mono">
-                Upon deployment, a unique telemetry code will be transmitted to your terminal. This allows for real-time monitoring of your artifact as it navigates the global grid.
+                Once your order has shipped, a tracking link will be sent to your email so you can follow your delivery in real time.
               </p>
               <div className="flex items-center gap-4 text-xs font-bold text-accent">
                  <MapPin className="w-4 h-4" />
-                 <span className="uppercase tracking-widest">Global Telemetry Active</span>
+                 <span className="uppercase tracking-widest">Live Tracking Available</span>
               </div>
             </div>
           </div>
