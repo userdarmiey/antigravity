@@ -90,7 +90,7 @@ export default function Home() {
                 Made to Fit.
               </motion.span>
             </span>
-            <span className="relative inline-block overflow-hidden -mt-4 md:-mt-8">
+            <span className="relative inline-block overflow-hidden mt-2 md:-mt-8">
               <motion.span 
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}

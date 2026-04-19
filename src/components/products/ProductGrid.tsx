@@ -28,10 +28,14 @@ export default function ProductGrid() {
       setLoading(true);
       const { data, error } = await supabase.from('products').select('*');
       if (data) {
-        const clampedData = data.map(p => ({
-          ...p,
-          price: Math.max(10000, Math.min(40000, p.price))
-        }));
+        const clampedData = data.map(p => {
+          const rawClamped = Math.max(10000, Math.min(40000, p.price));
+          const incremented = Math.round(rawClamped / 5000) * 5000;
+          return {
+            ...p,
+            price: Math.max(10000, Math.min(40000, incremented))
+          };
+        });
         setProducts(clampedData);
       }
       setLoading(false);

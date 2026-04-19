@@ -34,7 +34,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
         setProduct({
           id: params.id,
           name: keyword + " " + parts[2],
-          price: 18000 + (Math.floor(Math.random() * 20) * 1000),
+          price: 15000 + (Math.floor(Math.random() * 6) * 5000),
           category: keyword,
           image: dummyImg
         } as Product);
@@ -48,9 +48,11 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
         .eq('id', params.id)
         .single();
       if (data) {
+        const rawClamped = Math.max(10000, Math.min(40000, data.price));
+        const incremented = Math.round(rawClamped / 5000) * 5000;
         setProduct({
           ...data,
-          price: Math.max(10000, Math.min(40000, data.price))
+          price: Math.max(10000, Math.min(40000, incremented))
         });
       }
       setLoading(false);

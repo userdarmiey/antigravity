@@ -18,10 +18,14 @@ export default function CollectionPage({ params }: { params: { slug: string } })
       setLoading(true);
       const { data } = await supabase.from('products').select('*');
       if (data) {
-        const clampedData = data.map(p => ({
-          ...p,
-          price: Math.max(10000, Math.min(40000, p.price))
-        }));
+        const clampedData = data.map(p => {
+          const rawClamped = Math.max(10000, Math.min(40000, p.price));
+          const incremented = Math.round(rawClamped / 5000) * 5000;
+          return {
+            ...p,
+            price: Math.max(10000, Math.min(40000, incremented))
+          };
+        });
         if (keyword) {
            const filtered = clampedData.filter(p => 
               p.name.toLowerCase().includes(keyword.toLowerCase()) || 
@@ -35,7 +39,7 @@ export default function CollectionPage({ params }: { params: { slug: string } })
              const mockProducts = Array(8).fill(null).map((_, i) => ({
                  id: "mock-" + keyword + "-" + i,
                  name: keyword + " Item " + (i + 1),
-                 price: 15000 + (Math.floor(Math.random() * 25) * 1000),
+                 price: 10000 + (Math.floor(Math.random() * 7) * 5000),
                  category: keyword,
                  image: dummyImg
              }));
