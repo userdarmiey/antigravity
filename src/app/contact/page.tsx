@@ -116,7 +116,7 @@ export default function ContactPage() {
                    <h3 className="text-sm font-black uppercase tracking-widest">Connect</h3>
                 </div>
                 <div className="space-y-4 text-nebula text-xs font-mono">
-                   <p className="hover:text-accent transition-colors cursor-pointer">hello@fitandfab.com</p>
+                   <a href="mailto:fitandfabofficials@gmail.com" className="hover:text-accent transition-colors cursor-pointer">fitandfabofficials@gmail.com</a>
                    <p className="hover:text-accent transition-colors cursor-pointer">+44 20 0000 0000</p>
                 </div>
              </motion.div>

@@ -19,6 +19,7 @@ export default function Footer() {
             <Link href="/shipping" className="text-nebula hover:text-accent text-sm tracking-wider transition-colors">Shipping Operations</Link>
             <Link href="/returns" className="text-nebula hover:text-accent text-sm tracking-wider transition-colors">Returns & Matrix</Link>
             <Link href="/contact" className="text-nebula hover:text-accent text-sm tracking-wider transition-colors">Contact Protocol</Link>
+            <a href="mailto:fitandfabofficials@gmail.com" className="text-nebula hover:text-accent text-sm tracking-wider transition-colors">fitandfabofficials@gmail.com</a>
           </div>
           <div className="flex flex-col gap-4">
             <h4 className="text-foreground text-xs uppercase tracking-[0.2em] font-bold mb-2">Legal</h4>
