@@ -213,6 +213,12 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
         </motion.div>
       </div>
 
+      {/* RELATED PRODUCTS */}
+      <section className="mt-32 max-w-[1700px] mx-auto border-t border-border pt-20">
+        <h2 className="text-2xl font-black uppercase tracking-tight mb-12">You Might Also Like</h2>
+        <ProductGrid />
+      </section>
+
       {/* Add to Cart Notification */}
       <AnimatePresence>
         {notification && (

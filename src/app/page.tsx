@@ -190,6 +190,40 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SOCIAL FEED */}
+      <section className="py-32 border-t border-border relative z-10">
+        <div className="max-w-[1700px] mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div className="flex flex-col gap-4">
+              <span className="text-accent text-xs font-black uppercase tracking-[0.4em]">Instagram</span>
+              <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none">Find us <br/> on the Gram</h2>
+            </div>
+            <a href="https://instagram.com" target="_blank" className="px-10 py-5 border border-border rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-foreground hover:text-background transition-all">
+              @fitandfabofficials
+            </a>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {[1,2,3,4,5,6].map(i => (
+              <motion.div 
+                key={i}
+                whileHover={{ scale: 0.98 }}
+                className="aspect-square bg-surface border border-border rounded-3xl overflow-hidden relative group cursor-pointer"
+              >
+                <img src={`https://picsum.photos/seed/streetwear-${i}/600/600`} alt="social" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+                <div className="absolute inset-0 bg-accent/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                   <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center">
+                      <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                      </svg>
+                   </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* THE PHILOSOPHY SECTION */}
       <motion.section 
         id="philosophy"
