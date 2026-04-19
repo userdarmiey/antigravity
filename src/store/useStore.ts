@@ -17,6 +17,7 @@ interface AppState {
   updateQuantity: (productId: string, quantity: number) => void;
   setSearchQuery: (query: string) => void;
   cartTotal: () => number;
+  clearCart: () => void;
 }
 
 export const useStore = create<AppState>((set, get) => ({
@@ -65,4 +66,6 @@ export const useStore = create<AppState>((set, get) => ({
   setSearchQuery: (query) => set({ searchQuery: query }),
 
   cartTotal: () => get().cart.reduce((total, item) => total + (item.price * item.quantity), 0),
+
+  clearCart: () => set({ cart: [] }),
 }));
