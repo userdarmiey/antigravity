@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { ArrowRight as ArrowIcon } from "lucide-react";
 import ProductGrid from "@/components/products/ProductGrid";
+import CategoriesRow from "@/components/products/CategoriesRow";
 import { motion, useScroll, useSpring } from "framer-motion";
 import LaunchCountdown from "@/components/ui/Countdown";
 
@@ -140,10 +141,10 @@ export default function Home() {
         id="products" 
         className="bg-transparent w-full pt-20 pb-40 relative z-10 border-t border-border"
       >
-        <div className="max-w-[1700px] mx-auto px-6 lg:px-12 w-full">
-           <div className="flex flex-col mb-24 items-center">
-             <h2 className="text-foreground text-xs uppercase tracking-[0.5em] font-bold opacity-40 mb-4">Our Collection</h2>
-             <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-accent to-transparent" />
+        <div className="max-w-[1700px] mx-auto w-full">
+           <CategoriesRow />
+           <div className="flex flex-col mb-12 items-start px-6 lg:px-12">
+             <h2 className="text-foreground text-2xl font-bold tracking-tight mb-2">Featured Items</h2>
            </div>
           <ProductGrid />
         </div>

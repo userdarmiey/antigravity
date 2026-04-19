@@ -31,6 +31,7 @@ export default function Header() {
         <nav className="hidden lg:flex gap-12 text-sm uppercase tracking-[0.1em] text-nebula font-bold shrink-0">
           <Link href="/#products" className="hover:text-foreground transition-colors duration-500 relative group py-2">Shop</Link>
           <Link href="/#philosophy" className="hover:text-foreground transition-colors duration-500 relative group py-2">Our Story</Link>
+          <Link href="/track" className="hover:text-foreground transition-colors duration-500 relative group py-2">Track Order</Link>
         </nav>
 
         <div className="flex items-center gap-6">
