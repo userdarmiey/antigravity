@@ -61,11 +61,6 @@ export default function Home() {
 
         {/* Technical Sidebar Text Removed per user request */}
 
-        {/* Decorative Markers */}
-        <div className="absolute top-32 left-12 w-4 h-4 border-l border-t border-foreground/20 z-20" />
-        <div className="absolute top-32 right-12 w-4 h-4 border-r border-t border-foreground/20 z-20" />
-        <div className="absolute bottom-32 left-12 w-4 h-4 border-l border-b border-foreground/20 z-20" />
-        <div className="absolute bottom-32 right-12 w-4 h-4 border-r border-b border-foreground/20 z-20" />
 
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
