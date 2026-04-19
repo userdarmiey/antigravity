@@ -88,60 +88,25 @@ export default function ProductGrid() {
   }
 
   return (
-    <div className="w-full relative px-12 transition-colors duration-500">
-      {/* System Status Header */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-16">
-        <div className="flex flex-col items-center md:items-start gap-1">
-          <h2 className="text-foreground text-xs font-bold tracking-[0.3em] uppercase opacity-60">Available Now</h2>
-          <div className="flex items-center gap-3">
-            <div className="w-2 h-2 rounded-full bg-accent animate-pulse shadow-[0_0_10px_var(--accent)]" />
-            <span className="text-accent font-sans text-xs tracking-[0.1em] font-bold uppercase">Live Stock</span>
-          </div>
+    <div className="w-full relative px-6 md:px-12">
+      {/* Search Result Status */}
+      <div className="flex items-center justify-between mb-12">
+        <div className="flex flex-col gap-1">
+          <span className="text-accent text-[10px] uppercase font-black tracking-[0.4em]">Available Now</span>
+          <h2 className="text-2xl md:text-4xl font-black uppercase tracking-tight">Archive Drop</h2>
         </div>
-        
-        {/* Secondary Modular Controls */}
-        <div className="hidden md:flex gap-4">
-           <button 
-             onClick={() => scroll('left')}
-             className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-foreground/40 hover:text-accent hover:border-accent transition-all active:scale-95 bg-foreground/5 backdrop-blur-md"
-           >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-           </button>
-           <button 
-             onClick={() => scroll('right')}
-             className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-foreground/40 hover:text-accent hover:border-accent transition-all active:scale-95 bg-foreground/5 backdrop-blur-md"
-           >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-           </button>
+        <div className="flex items-center gap-2 px-4 py-2 bg-surface/40 backdrop-blur-xl border border-white/5 rounded-full">
+           <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+           <span className="text-[10px] font-black uppercase tracking-widest text-foreground/60">{filteredProducts.length} items</span>
         </div>
       </div>
 
-      {/* Single Straight Line Exhibit */}
-
-      <div 
-        ref={scrollContainerRef}
-        className="flex gap-6 md:gap-12 overflow-x-auto no-scrollbar pb-12 md:pb-32 px-6 -mx-6 items-start scroll-smooth snap-x snap-mandatory"
-      >
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-12 pb-32">
         {filteredProducts.map((product) => (
-          <div 
-            key={product.id} 
-            className="snap-center shrink-0"
-          >
+          <div key={product.id} className="flex justify-center">
             <ProductCard product={product} />
           </div>
         ))}
-
-        {/* Archival Spacer */}
-        <div className="hidden md:flex min-w-[400px] items-center justify-center h-[300px]">
-          <div className="flex flex-col items-center gap-6 opacity-40">
-            <div className="w-16 h-[1px] bg-accent" />
-            <span className="text-xs font-bold tracking-[0.3em] uppercase text-foreground italic">End of Collection</span>
-          </div>
-        </div>
       </div>
 
       {/* Product Detail Modal */}

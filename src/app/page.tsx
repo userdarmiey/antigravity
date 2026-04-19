@@ -3,7 +3,6 @@ import React from "react";
 import Link from "next/link";
 import { ArrowRight as ArrowIcon } from "lucide-react";
 import ProductGrid from "@/components/products/ProductGrid";
-import CategoriesRow from "@/components/products/CategoriesRow";
 import { motion, useScroll, useSpring } from "framer-motion";
 import LaunchCountdown from "@/components/ui/Countdown";
 import ProcessAnimation from "@/components/ui/ProcessAnimation";
@@ -61,8 +60,6 @@ export default function Home() {
         </div>
 
         {/* Technical Sidebar Text Removed per user request */}
-
-
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -168,26 +165,12 @@ export default function Home() {
              ))}
            </div>
         </div>
-      </section>
-
-      {/* COLLECTION SECTION */}
-      <motion.section 
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        id="products" 
-        className="bg-transparent w-full pt-16 pb-32 relative z-10 border-t border-border"
-      >
-        <div className="max-w-[1700px] mx-auto w-full">
-           <CategoriesRow />
-           <div className="flex flex-col mb-12 items-start px-6 lg:px-12">
-             <h2 className="text-foreground text-2xl font-bold tracking-tight mb-2">Featured Items</h2>
-           </div>
+      {/* PRODUCT GRID SECTION */}
+      <section id="products" className="py-24 border-t border-border relative z-10 bg-surface/5">
+        <div className="max-w-[1700px] mx-auto">
           <ProductGrid />
         </div>
-      </motion.section>
-
+      </section>
       {/* COUNTDOWN LAUNCH SECTION */}
       <LaunchCountdown />
 
