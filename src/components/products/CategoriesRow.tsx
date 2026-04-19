@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useStore } from '@/store/useStore';
+import { useRouter } from 'next/navigation';
 
 const categories = [
   { name: "Solo Leveling", keyword: "Solo", items: "21 Items Available", image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=800" },
@@ -14,12 +14,11 @@ const categories = [
 const duplicatedCategories = [...categories, ...categories];
 
 export default function CategoriesRow() {
-  const setSearchQuery = useStore((state) => state.setSearchQuery);
+  const router = useRouter();
 
   const handleCategoryClick = (keyword: string) => {
-    setSearchQuery(keyword);
-    // Smooth scroll straight down to the products list
-    document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+    // Navigate to dedicated collections page instead of filtering live stock
+    router.push(`/collection/${encodeURIComponent(keyword)}`);
   };
 
   return (
@@ -39,7 +38,7 @@ export default function CategoriesRow() {
                onClick={() => handleCategoryClick(cat.keyword)}
                className="relative w-[280px] md:w-[400px] h-[220px] md:h-[280px] shrink-0 rounded-[2rem] overflow-hidden group cursor-pointer shadow-xl border border-border"
              >
-                <img src={cat.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100" alt={cat.name} />
+                <img src={cat.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" alt={cat.name} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
                 <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 flex flex-col z-10 pointer-events-none">
                    <h3 className="text-white text-xl md:text-2xl font-bold tracking-tight mb-1">{cat.name}</h3>
