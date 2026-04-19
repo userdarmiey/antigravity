@@ -34,7 +34,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
         setProduct({
           id: params.id,
           name: keyword + " " + parts[2],
-          price: 25000,
+          price: 18000 + (Math.floor(Math.random() * 20) * 1000),
           category: keyword,
           image: dummyImg
         } as Product);
@@ -47,8 +47,12 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
         .select('*')
         .eq('id', params.id)
         .single();
-      
-      if (data) setProduct(data);
+      if (data) {
+        setProduct({
+          ...data,
+          price: Math.max(10000, Math.min(40000, data.price))
+        });
+      }
       setLoading(false);
     }
     fetchProduct();

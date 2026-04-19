@@ -27,7 +27,13 @@ export default function ProductGrid() {
     async function fetchProducts() {
       setLoading(true);
       const { data, error } = await supabase.from('products').select('*');
-      if (data) setProducts(data);
+      if (data) {
+        const clampedData = data.map(p => ({
+          ...p,
+          price: Math.max(10000, Math.min(40000, p.price))
+        }));
+        setProducts(clampedData);
+      }
       setLoading(false);
     }
     fetchProducts();
