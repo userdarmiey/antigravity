@@ -132,11 +132,6 @@ export default function Home() {
       <ProcessAnimation />
 
       {/* COLLECTION SECTION */}
-      <motion.section 
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 1, ease: "easeOut" }}
       {/* JUMIA STYLE QUICK CATEGORIES */}
       <section className="py-20 relative z-10 overflow-hidden">
         <div className="max-w-[1700px] mx-auto px-6">
