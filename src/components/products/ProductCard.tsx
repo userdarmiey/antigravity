@@ -38,18 +38,31 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           {/* Clean Info Area */}
           <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
             <div className="flex flex-col gap-1">
-              <span className="text-[9px] font-black text-accent tracking-[0.3em] uppercase opacity-60">
-                {product.category}
-              </span>
+              <div className="flex items-center gap-2">
+                 <span className="text-[9px] font-black text-accent tracking-[0.3em] uppercase opacity-60">
+                   {product.category}
+                 </span>
+                 <div className="w-1 h-1 rounded-full bg-foreground/20" />
+                 <div className="flex items-center gap-0.5">
+                    {[1,2,3,4,5].map(i => (
+                      <div key={i} className="w-1.5 h-1.5 bg-yellow-500 rounded-full" />
+                    ))}
+                 </div>
+              </div>
               <h3 className="text-sm md:text-xl font-black text-foreground uppercase tracking-tight line-clamp-1">
                 {product.name}
               </h3>
             </div>
 
             <div className="flex items-center justify-between mt-4">
-              <span className="text-xl md:text-2xl font-black text-foreground italic">
-                ₦{product.price.toLocaleString()}
-              </span>
+              <div className="flex flex-col">
+                <span className="text-[8px] font-black text-green-500 uppercase tracking-widest mb-1 flex items-center gap-1">
+                  <div className="w-1.5 h-1.5 rounded-full bg-green-500" /> Verify Genuine
+                </span>
+                <span className="text-xl md:text-2xl font-black text-foreground italic">
+                  ₦{product.price.toLocaleString()}
+                </span>
+              </div>
               <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-accent group-hover:border-transparent group-hover:shadow-[0_0_20px_var(--accent)] transition-all">
                 <svg className="w-4 h-4 text-foreground group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 4v16m8-8H4" />

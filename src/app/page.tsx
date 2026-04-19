@@ -137,6 +137,39 @@ export default function Home() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 1, ease: "easeOut" }}
+      {/* JUMIA STYLE QUICK CATEGORIES */}
+      <section className="py-20 relative z-10 overflow-hidden">
+        <div className="max-w-[1700px] mx-auto px-6">
+           <div className="grid grid-cols-4 md:grid-cols-8 gap-4 md:gap-8">
+             {[
+               { name: "Archive", icon: "📦" },
+               { name: "New Drops", icon: "🔥" },
+               { name: "Hoodies", icon: "🧥" },
+               { name: "Tees", icon: "👕" },
+               { name: "Cap", icon: "🧢" },
+               { name: "Pants", icon: "👖" },
+               { name: "Best Sales", icon: "📈" },
+               { name: "Support", icon: "💬" }
+             ].map((cat, i) => (
+               <div key={i} className="flex flex-col items-center gap-4 group cursor-pointer">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-surface/40 backdrop-blur-xl border border-white/5 flex items-center justify-center text-2xl group-hover:bg-accent/10 group-hover:border-accent/30 transition-all duration-500">
+                    {cat.icon}
+                  </div>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-foreground/40 group-hover:text-accent transition-colors">
+                    {cat.name}
+                  </span>
+               </div>
+             ))}
+           </div>
+        </div>
+      </section>
+
+      {/* COLLECTION SECTION */}
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 1, ease: "easeOut" }}
         id="products" 
         className="bg-transparent w-full pt-16 pb-32 relative z-10 border-t border-border"
       >
