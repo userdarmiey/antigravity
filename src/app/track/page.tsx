@@ -1,25 +1,42 @@
 "use client";
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { createClient } from '@/utils/supabase/client';
 
 export default function TrackOrder() {
   const [trackingId, setTrackingId] = useState('');
   const [email, setEmail] = useState('');
   const [isScanning, setIsScanning] = useState(false);
   const [trackingResult, setTrackingResult] = useState<null | 'found' | 'error'>(null);
-
-  const handleTrack = (e: React.FormEvent) => {
+  const [orderData, setOrderData] = useState<any>(null);
+  const supabase = createClient();
+ 
+  const handleTrack = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!trackingId || !email) return;
     
     setIsScanning(true);
     setTrackingResult(null);
 
-    // Mock API delay
-    setTimeout(() => {
+    try {
+      const { data, error } = await supabase
+        .from('orders')
+        .select('*')
+        .eq('id', trackingId.trim())
+        .eq('customer_email', email.trim())
+        .single();
+      
+      if (data) {
+        setOrderData(data);
+        setTrackingResult('found');
+      } else {
+        setTrackingResult('error');
+      }
+    } catch (err) {
+      setTrackingResult('error');
+    } finally {
       setIsScanning(false);
-      setTrackingResult('found');
-    }, 2000);
+    }
   };
 
   return (
@@ -80,6 +97,23 @@ export default function TrackOrder() {
           </div>
         )}
 
+        {trackingResult === 'error' && (
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="w-full bg-red-500/10 border border-red-500/50 p-6 rounded-2xl flex flex-col items-center gap-2"
+          >
+            <span className="text-red-500 font-black uppercase text-xs tracking-widest">Protocol Error</span>
+            <p className="text-foreground/60 text-xs text-center">Invalid Tracking ID or Email. Please verify your credentials and try again.</p>
+            <button 
+              onClick={() => { setTrackingResult(null); setTrackingId(''); }}
+              className="mt-4 text-[10px] font-black uppercase tracking-widest text-accent hover:underline"
+            >
+              Retry Connection
+            </button>
+          </motion.div>
+        )}
+
         {trackingResult === 'found' && (
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
@@ -90,9 +124,11 @@ export default function TrackOrder() {
               <span className="text-[10px] font-bold tracking-widest text-foreground/40 uppercase">Status</span>
               <span className="text-xl font-black text-accent uppercase flex items-center gap-2">
                 <div className="w-2.5 h-2.5 bg-accent rounded-full animate-pulse shadow-[0_0_10px_var(--accent)]" />
-                On The Way
+                {orderData?.status || 'On The Way'}
               </span>
-              <span className="text-sm font-mono text-foreground/80 mt-2">Arriving Tomorrow</span>
+              <span className="text-sm font-mono text-foreground/80 mt-2">
+                {orderData?.status === 'Delivered' ? 'Arrived at Destination' : 'Arriving Soon'}
+              </span>
             </div>
 
             {/* Tracking Path */}
