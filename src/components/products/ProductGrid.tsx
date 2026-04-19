@@ -124,12 +124,12 @@ export default function ProductGrid() {
 
       <div 
         ref={scrollContainerRef}
-        className="grid grid-cols-2 md:flex md:gap-12 md:overflow-x-auto no-scrollbar pb-12 md:pb-32 px-4 -mx-4 items-start scroll-smooth gap-4"
+        className="flex gap-6 md:gap-12 overflow-x-auto no-scrollbar pb-12 md:pb-32 px-6 -mx-6 items-start scroll-smooth snap-x snap-mandatory"
       >
-        {filteredProducts.slice(0, typeof window !== 'undefined' && window.innerWidth < 768 ? 4 : filteredProducts.length).map((product) => (
+        {filteredProducts.map((product) => (
           <div 
             key={product.id} 
-            className="md:snap-start md:shrink-0 md:first:ml-4"
+            className="snap-center shrink-0"
           >
             <ProductCard product={product} />
           </div>
