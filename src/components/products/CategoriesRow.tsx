@@ -3,7 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 
-const categories = [
+export const categories = [
   { name: "Solo Leveling", keyword: "Solo", items: "21 Items Available", image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=800" },
   { name: "Plain Wear", keyword: "Plain", items: "14 Items Available", image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=800" },
   { name: "FNF Essentials", keyword: "", items: "12 Items Available", image: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&q=80&w=800" },

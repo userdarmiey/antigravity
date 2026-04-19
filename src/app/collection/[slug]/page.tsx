@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import { ProductCard, Product } from '@/components/products/ProductCard';
+import { categories } from '@/components/products/CategoriesRow';
 import { motion } from 'framer-motion';
 
 export default function CollectionPage({ params }: { params: { slug: string } }) {
@@ -22,7 +23,20 @@ export default function CollectionPage({ params }: { params: { slug: string } })
               p.name.toLowerCase().includes(keyword.toLowerCase()) || 
               p.category.toLowerCase().includes(keyword.toLowerCase())
            );
-           setProducts(filtered);
+           if (filtered.length > 0) {
+             setProducts(filtered);
+           } else {
+             const cat = categories.find(c => c.keyword === keyword);
+             const dummyImg = cat?.image || data[0]?.image || "";
+             const mockProducts = Array(8).fill(null).map((_, i) => ({
+                 id: "mock-" + keyword + "-" + i,
+                 name: keyword + " Item " + (i + 1),
+                 price: 25000 + (Math.floor(Math.random() * 5) * 1000),
+                 category: keyword,
+                 image: dummyImg
+             }));
+             setProducts(mockProducts as Product[]);
+           }
         } else {
            setProducts(data);
         }

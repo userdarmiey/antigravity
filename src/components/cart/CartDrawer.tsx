@@ -34,9 +34,9 @@ export default function CartDrawer() {
 
             <div className="relative z-10 flex justify-between items-center mb-16">
               <div className="flex flex-col gap-1">
-                <h2 className="text-[10px] tracking-[0.5em] uppercase font-bold text-accent flex items-center gap-2">
+                <h2 className="text-xs tracking-[0.2em] uppercase font-bold text-accent flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                  Terminal
+                  Your Cart
                 </h2>
                 <span className="text-2xl font-black tracking-tighter text-foreground">FIT & FAB</span>
               </div>
@@ -101,7 +101,7 @@ export default function CartDrawer() {
                     <div className="w-16 h-16 rounded-full border border-accent/10 flex items-center justify-center animate-spin-slow" />
                     <div className="absolute inset-0 flex items-center justify-center">✦</div>
                   </div>
-                  Empty Registry
+                  Your Cart is Empty
                 </div>
               )}
             </div>
@@ -109,12 +109,12 @@ export default function CartDrawer() {
             <div className="relative z-10 pt-10 mt-auto">
               <div className="flex justify-between items-end mb-10 border-b border-border pb-8">
                 <div className="flex flex-col gap-1">
-                  <span className="text-foreground/30 uppercase tracking-[0.4em] text-[10px] font-bold">Total Payload</span>
+                  <span className="text-foreground/50 uppercase tracking-[0.2em] text-[10px] font-bold">Subtotal</span>
                   <span className="text-foreground font-black text-3xl tracking-tighter leading-none">₦{cartTotal().toLocaleString()}</span>
                 </div>
                 <div className="flex flex-col items-end gap-1">
                   <div className="w-8 h-[2px] bg-accent" />
-                  <span className="text-accent text-[9px] font-mono tracking-widest">ENCRYPTED</span>
+                  <span className="text-accent text-[10px] font-bold tracking-widest">SECURE CHECKOUT</span>
                 </div>
               </div>
               

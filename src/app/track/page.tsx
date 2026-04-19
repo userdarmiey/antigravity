@@ -33,9 +33,9 @@ export default function TrackOrder() {
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent via-blue-400 to-accent" />
         
         <div className="flex flex-col items-center mb-10 text-center">
-          <span className="text-accent text-[10px] font-bold uppercase tracking-[0.3em] mb-4">Logistics Matrix</span>
-          <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-foreground">Track Your Order</h1>
-          <p className="text-foreground/60 text-sm mt-4 max-w-sm">Enter your tracking code and email to monitor your package's delivery status.</p>
+          <span className="text-accent text-xs font-bold uppercase tracking-[0.2em] mb-4">Tracking System</span>
+          <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-foreground">Track Order</h1>
+          <p className="text-foreground/60 text-sm mt-4 max-w-sm">Enter your tracking number and email to see where your package is.</p>
         </div>
 
         {!trackingResult && !isScanning && (
@@ -76,7 +76,7 @@ export default function TrackOrder() {
         {isScanning && (
           <div className="w-full py-16 flex flex-col items-center justify-center gap-6">
             <div className="w-16 h-16 border-4 border-foreground/10 border-t-accent rounded-full animate-spin" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-foreground/60 animate-pulse">Locating Package...</span>
+            <span className="text-xs font-bold uppercase tracking-[0.1em] text-foreground/60 animate-pulse">Finding Package...</span>
           </div>
         )}
 
@@ -90,9 +90,9 @@ export default function TrackOrder() {
               <span className="text-[10px] font-bold tracking-widest text-foreground/40 uppercase">Status</span>
               <span className="text-xl font-black text-accent uppercase flex items-center gap-2">
                 <div className="w-2.5 h-2.5 bg-accent rounded-full animate-pulse shadow-[0_0_10px_var(--accent)]" />
-                In Transit (Abuja Hub)
+                On The Way
               </span>
-              <span className="text-sm font-mono text-foreground/80 mt-2">Expected delivery: Tomorrow by 5:00 PM</span>
+              <span className="text-sm font-mono text-foreground/80 mt-2">Arriving Tomorrow</span>
             </div>
 
             {/* Tracking Path */}
@@ -104,8 +104,8 @@ export default function TrackOrder() {
                   <div className="w-2 h-2 rounded-full bg-white" />
                 </div>
                 <div className="flex flex-col gap-1 -mt-1">
-                  <span className="text-sm font-bold text-foreground">Out for Delivery</span>
-                  <span className="text-xs text-foreground/50">Abuja Logistics Center</span>
+                  <span className="text-sm font-bold text-foreground">Coming to You</span>
+                  <span className="text-xs text-foreground/50">Delivery Agent Dispatched</span>
                   <span className="text-[10px] font-mono text-foreground/30">Today, 08:42 AM</span>
                 </div>
               </div>
@@ -115,7 +115,7 @@ export default function TrackOrder() {
                   <div className="w-2 h-2 rounded-full bg-foreground" />
                 </div>
                 <div className="flex flex-col gap-1 -mt-1">
-                  <span className="text-sm font-bold text-foreground/60">Arrived at Sort Facility</span>
+                  <span className="text-sm font-bold text-foreground/60">At Sorting Center</span>
                   <span className="text-xs text-foreground/40">Abuja Hub</span>
                   <span className="text-[10px] font-mono text-foreground/30">Yesterday, 11:30 PM</span>
                 </div>
@@ -126,7 +126,7 @@ export default function TrackOrder() {
                   <div className="w-2 h-2 rounded-full bg-foreground" />
                 </div>
                 <div className="flex flex-col gap-1 -mt-1">
-                  <span className="text-sm font-bold text-foreground/60">Order Processing Complete</span>
+                  <span className="text-sm font-bold text-foreground/60">Order Ready</span>
                   <span className="text-xs text-foreground/40">Lagos Main Warehouse</span>
                   <span className="text-[10px] font-mono text-foreground/30">2 days ago, 02:15 PM</span>
                 </div>
@@ -137,7 +137,7 @@ export default function TrackOrder() {
                   <div className="w-2 h-2 rounded-full bg-foreground" />
                 </div>
                 <div className="flex flex-col gap-1 -mt-1">
-                  <span className="text-sm font-bold text-foreground/60">Order Placed</span>
+                  <span className="text-sm font-bold text-foreground/60">Order Confirmed</span>
                   <span className="text-[10px] font-mono text-foreground/30">2 days ago, 09:00 AM</span>
                 </div>
               </div>
