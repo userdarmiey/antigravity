@@ -8,7 +8,7 @@ export default function Header() {
   const cartSize = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
-    <header className="w-full border-b border-border sticky top-0 bg-background/80 backdrop-blur-xl z-50">
+    <header className="w-full border-b border-border sticky top-0 bg-background/40 backdrop-blur-3xl z-50 transition-colors duration-500">
       <div className="max-w-[1600px] mx-auto px-8 h-24 flex items-center justify-between gap-8">
         <Link href="/" className="font-sans font-black text-xl md:text-2xl tracking-[0.1em] uppercase text-foreground cursor-pointer hover:text-nebula transition-colors shrink-0">
           FIT AND FAB

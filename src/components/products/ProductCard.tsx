@@ -18,7 +18,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       >
 
       <div className="group relative w-[240px] md:w-[400px] h-[340px] md:h-[580px] transition-all duration-700 select-none shrink-0">
-        <div className="absolute inset-0 bg-surface border border-border group-hover:border-accent/40 group-hover:shadow-[0_10px_60px_rgba(0,0,0,0.4)] transition-all duration-700 rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden">
+        <div className="absolute inset-0 bg-surface/40 backdrop-blur-3xl border border-border group-hover:border-accent/40 group-hover:shadow-[0_10px_60px_rgba(0,0,0,0.4)] transition-all duration-700 rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden">
           {/* Discount Pill */}
           <div className="absolute top-4 left-4 z-30">
             <div className="bg-[#ff2a5f] text-white px-2 py-0.5 md:px-3 md:py-1 rounded-sm text-[8px] md:text-[10px] font-black tracking-wider shadow-lg">

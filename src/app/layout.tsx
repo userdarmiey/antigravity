@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import CartDrawer from "@/components/cart/CartDrawer";
 import CookieConsent from "@/components/ui/CookieConsent";
 import NewsletterPopup from "@/components/ui/NewsletterPopup";
+import CustomCursor from "@/components/ui/CustomCursor";
 import "./globals.css";
 
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-sans" });
@@ -28,6 +29,7 @@ export default function RootLayout({
         <CartDrawer />
         <CookieConsent />
         <NewsletterPopup />
+        <CustomCursor />
 
         <main className="flex-grow">
           {children}
