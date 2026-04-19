@@ -127,6 +127,25 @@ export default function Home() {
         </motion.div>
       </div>
 
+      {/* LIVE ACTIVITY TICKER */}
+      <div className="w-full bg-accent py-4 overflow-hidden relative z-10 border-y border-white/10">
+        <motion.div 
+          animate={{ x: [0, -1000] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          className="flex whitespace-nowrap gap-20 items-center justify-center"
+        >
+          {[...Array(10)].map((_, i) => (
+            <div key={i} className="flex items-center gap-4">
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white">Latest Activity:</span>
+              <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/80">Seyi from Lagos just copped a Solo Leveling Tee</span>
+              <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+              <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/80">Bolaji from Abuja joined the newsletter</span>
+              <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+            </div>
+          ))}
+        </motion.div>
+      </div>
+
       {/* COLLECTION SECTION */}
       <motion.section 
         initial={{ opacity: 0, y: 50 }}
