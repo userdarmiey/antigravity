@@ -14,10 +14,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
-        className="w-full md:w-[400px] relative group shrink-0"
+        className="w-[180px] md:w-[400px] relative group shrink-0"
       >
 
-      <div className="group relative w-full md:w-[400px] h-[320px] md:h-[580px] transition-all duration-700 select-none shrink-0">
+      <div className="group relative w-[180px] md:w-[400px] h-[280px] md:h-[580px] transition-all duration-700 select-none shrink-0">
         <div className="absolute inset-0 bg-surface border border-border group-hover:border-accent/40 group-hover:shadow-[0_10px_60px_rgba(0,0,0,0.4)] transition-all duration-700 rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden">
           {/* Neon Category Header */}
           <div className="absolute top-4 left-4 md:top-8 md:left-8 z-20">
@@ -29,7 +29,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </div>
 
           {/* Product Centered - Dark Silhouette Style */}
-          <div className="absolute inset-x-0 top-12 bottom-[110px] md:bottom-32 flex items-center justify-center p-2 md:p-8">
+          <div className="absolute inset-x-0 top-10 bottom-[95px] md:bottom-32 flex items-center justify-center p-2 md:p-8">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--accent)_0%,transparent_70%)] opacity-0 group-hover:opacity-[0.05] transition-opacity duration-1000" />
             <img
               src={product.image}

@@ -118,12 +118,12 @@ export default function ProductGrid() {
 
       <div 
         ref={scrollContainerRef}
-        className="grid grid-cols-2 gap-4 md:flex md:gap-12 md:overflow-x-auto md:no-scrollbar pb-32 md:snap-x md:snap-mandatory px-4 md:-mx-4 items-start md:scroll-smooth"
+        className="flex gap-4 md:gap-12 overflow-x-auto no-scrollbar pb-12 md:pb-32 snap-x snap-mandatory px-4 -mx-4 items-start scroll-smooth"
       >
         {filteredProducts.map((product) => (
           <div 
             key={product.id} 
-            className="md:snap-start shrink-0 md:first:ml-4"
+            className="snap-start shrink-0 first:ml-4"
           >
             <ProductCard product={product} />
           </div>
