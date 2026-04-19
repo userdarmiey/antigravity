@@ -38,8 +38,8 @@ export default function CollectionPage({ params }: { params: { slug: string } })
              const dummyImg = cat?.image || data[0]?.image || "";
              const mockProducts = Array(8).fill(null).map((_, i) => ({
                  id: "mock-" + keyword + "-" + i,
-                 name: keyword + " Item " + (i + 1),
-                 price: 10000 + (Math.floor(Math.random() * 7) * 5000),
+                 name: keyword + " Item " + (i + i),
+                 price: 15000 + ((i % 6) * 5000),
                  category: keyword,
                  image: dummyImg
              }));

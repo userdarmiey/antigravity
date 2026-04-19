@@ -59,7 +59,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <div className="flex items-center justify-between mt-3 md:mt-8 pt-3 md:pt-5 border-t border-border">
               <div className="flex flex-col">
                 <span className="text-[8px] md:text-[10px] text-foreground/20 font-bold uppercase tracking-widest hidden md:inline-block">COST</span>
-                <span className="text-[13px] md:text-2xl font-black text-foreground tracking-tighter italic">
+                <span className="text-[16px] md:text-2xl font-black text-foreground tracking-tighter italic">
                   ₦{product.price.toLocaleString()}
                 </span>
               </div>

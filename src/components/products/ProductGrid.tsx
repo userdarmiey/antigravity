@@ -28,15 +28,11 @@ export default function ProductGrid() {
       setLoading(true);
       const { data, error } = await supabase.from('products').select('*');
       if (data) {
-        const clampedData = data.map(p => {
-          const rawClamped = Math.max(10000, Math.min(40000, p.price));
-          const incremented = Math.round(rawClamped / 5000) * 5000;
-          return {
-            ...p,
-            price: Math.max(10000, Math.min(40000, incremented))
-          };
-        });
-        setProducts(clampedData);
+        const incrementedData = data.map((p, idx) => ({
+          ...p,
+          price: 15000 + ((idx % 6) * 5000) // Ranges: 15k, 20k, 25k, 30k, 35k, 40k
+        }));
+        setProducts(incrementedData);
       }
       setLoading(false);
     }
@@ -128,12 +124,12 @@ export default function ProductGrid() {
 
       <div 
         ref={scrollContainerRef}
-        className="flex gap-4 md:gap-12 overflow-x-auto no-scrollbar pb-12 md:pb-32 snap-x snap-mandatory px-4 -mx-4 items-start scroll-smooth"
+        className="grid grid-cols-2 md:flex md:gap-12 md:overflow-x-auto no-scrollbar pb-12 md:pb-32 px-4 -mx-4 items-start scroll-smooth gap-4"
       >
-        {filteredProducts.map((product) => (
+        {filteredProducts.slice(0, typeof window !== 'undefined' && window.innerWidth < 768 ? 4 : filteredProducts.length).map((product) => (
           <div 
             key={product.id} 
-            className="snap-start shrink-0 first:ml-4"
+            className="md:snap-start md:shrink-0 md:first:ml-4"
           >
             <ProductCard product={product} />
           </div>
