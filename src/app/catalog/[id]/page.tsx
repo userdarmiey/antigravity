@@ -7,6 +7,7 @@ import { categories } from '@/components/products/CategoriesRow';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useStore } from '@/store/useStore';
 import Link from 'next/link';
+import Image from 'next/image';
 import { playPopSound } from '@/utils/sound';
 import ProductGrid from '@/components/products/ProductGrid';
 
@@ -26,7 +27,24 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
       setLoading(true);
       
       // Handle Mock Products for testing
-      if (params.id.startsWith('mock-')) {
+      if (params.id.startsWith('mock-') || params.id === 'bushido-01') {
+        if (params.id === 'bushido-01') {
+          setProduct({
+            id: 'bushido-01',
+            name: 'Bushido Art Theme Shirt',
+            price: 20000,
+            category: 'Tees',
+            image: 'https://images.unsplash.com/photo-1576566582414-72ce006a6c27?auto=format&fit=crop&q=80&w=800',
+            colorVariations: [
+              { color: 'Black', image: 'https://images.unsplash.com/photo-1576566582414-72ce006a6c27?auto=format&fit=crop&q=80&w=800' },
+              { color: 'White', image: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&q=80&w=800' },
+              { color: 'Beige', image: 'https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&q=80&w=800' }
+            ]
+          } as Product);
+          setLoading(false);
+          return;
+        }
+        
         const parts = params.id.split('-');
         const keyword = parts[1] || 'Essentials';
         const cat = categories.find(c => c.keyword === keyword);
@@ -116,14 +134,16 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
           animate={{ opacity: 1, x: 0 }}
           className="relative aspect-[3/4] bg-surface/50 border border-border rounded-[3rem] overflow-hidden flex items-center justify-center p-12"
         >
-          <div className="absolute top-8 left-8 flex items-center gap-3">
+          <div className="absolute top-8 left-8 flex items-center gap-3 z-20">
              <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
              <span className="text-[10px] text-accent/50 font-black uppercase tracking-widest">Aura Registry: {product.id}</span>
           </div>
-          <img 
-            src={product.image} 
+          <Image 
+            key={selectedColor}
+            src={product.colorVariations?.find(v => v.color === selectedColor)?.image || product.image} 
             alt={product.name} 
-            className="w-full h-full object-contain filter drop-shadow-[0_40px_100px_rgba(0,0,0,0.6)]"
+            fill
+            className="object-contain filter drop-shadow-[0_40px_100px_rgba(0,0,0,0.6)] p-12 transition-all duration-500"
           />
         </motion.div>
 
@@ -160,7 +180,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
             <div className="flex flex-col gap-4">
               <span className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.4em]">Select Color</span>
               <div className="flex gap-4">
-                {['Black', 'Dark Grey', 'Light Grey'].map(tone => (
+                {(product.colorVariations?.map(v => v.color) || ['Black', 'Dark Grey', 'Light Grey']).map(tone => (
                   <button 
                     key={tone} 
                     onClick={() => setSelectedColor(tone)}
@@ -229,8 +249,8 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
             exit={{ opacity: 0, y: 50, x: '-50%' }}
             className="fixed bottom-8 left-1/2 z-[1500] bg-surface border border-border shadow-2xl shadow-accent/10 rounded-2xl p-4 flex items-center gap-4 min-w-[340px] md:min-w-[400px] backdrop-blur-2xl"
           >
-            <div className="w-12 h-12 rounded-xl bg-background overflow-hidden shrink-0 border border-border">
-               <img src={notification.product.image} alt={notification.product.name} className="w-full h-full object-cover" />
+            <div className="w-12 h-12 rounded-xl bg-background overflow-hidden shrink-0 border border-border relative">
+               <Image src={notification.product.image} alt={notification.product.name} fill className="object-cover" />
             </div>
             <div className="flex flex-col flex-grow">
                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent mb-0.5">Added to Cart</span>

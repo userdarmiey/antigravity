@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useStore } from '@/store/useStore';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { createClient } from '@/utils/supabase/client';
 
 export default function CheckoutPage() {
@@ -17,7 +18,7 @@ export default function CheckoutPage() {
     setIsProcessing(true);
     
     // Generate a secure, unique, and non-guessable ID
-    const uniqueId = `FNF-${Math.random().toString(36).substring(2, 8).toUpperCase()}${Math.floor(Date.now() / 100000).toString().slice(-3)}`;
+    const uniqueId = `GSR-${Math.random().toString(36).substring(2, 8).toUpperCase()}${Math.floor(Date.now() / 100000).toString().slice(-3)}`;
     
     try {
       // Save order to Supabase (assuming an 'orders' table exists)
@@ -125,7 +126,9 @@ export default function CheckoutPage() {
           <div className="flex flex-col gap-4 mb-8">
             {cart.map(item => (
               <div key={item.id} className="flex items-center gap-4">
-                <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded-lg border border-border" />
+                <div className="relative w-16 h-16 shrink-0 overflow-hidden rounded-lg border border-border">
+                  <Image src={item.image} alt={item.name} fill className="object-cover" />
+                </div>
                 <div className="flex flex-col">
                   <span className="text-sm font-bold text-foreground line-clamp-1">{item.name}</span>
                   <span className="text-xs text-foreground/60 uppercase">Qty: {item.quantity}</span>

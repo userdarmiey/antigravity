@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ProductCard, Product } from './ProductCard';
+import Image from 'next/image';
 import { useStore } from '@/store/useStore';
 import { createClient } from '@/utils/supabase/client';
 import { playPopSound } from '@/utils/sound';
@@ -48,14 +49,25 @@ export default function ProductGrid() {
       } else {
         // Fallback for empty DB
         setProducts([
+          { 
+            id: 'bushido-01', 
+            name: 'Bushido Art Theme Shirt', 
+            price: 20000, 
+            category: 'Tees', 
+            image: 'https://images.unsplash.com/photo-1576566582414-72ce006a6c27?auto=format&fit=crop&q=80&w=800', // Default Black
+            colorVariations: [
+              { color: 'Black', image: 'https://images.unsplash.com/photo-1576566582414-72ce006a6c27?auto=format&fit=crop&q=80&w=800' },
+              { color: 'White', image: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&q=80&w=800' },
+              { color: 'Beige', image: 'https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&q=80&w=800' }
+            ]
+          },
           { id: '1', name: 'Archive Hoodie v1', price: 35000, category: 'Hoodies', image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=800' },
           { id: '2', name: 'Street Tee Black', price: 15000, category: 'Tees', image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=800' },
           { id: '3', name: 'Urban Cargo Pants', price: 40000, category: 'Pants', image: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&q=80&w=800' },
           { id: '4', name: 'Cyberpunk Cap', price: 12000, category: 'Accessories', image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&q=80&w=800' },
           { id: '5', name: 'Nomad Hoodie', price: 32000, category: 'Hoodies', image: 'https://images.unsplash.com/photo-1578932750294-f5075e85f44a?auto=format&fit=crop&q=80&w=800' },
           { id: '6', name: 'Boxy Fit Tee', price: 18000, category: 'Tees', image: 'https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&q=80&w=800' },
-          { id: '7', name: 'Lounge Joggers', price: 28000, category: 'Pants', image: 'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&q=80&w=800' },
-          { id: '8', name: 'Premium Oversized Tee', price: 25000, category: 'Tees', image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=800' }
+          { id: '7', name: 'Lounge Joggers', price: 28000, category: 'Pants', image: 'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&q=80&w=800' }
         ]);
       }
       setLoading(false);
@@ -128,7 +140,7 @@ export default function ProductGrid() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-12 pb-32">
         {filteredProducts.map((product) => (
           <div key={product.id} className="flex justify-center">
-            <ProductCard product={product} />
+            <ProductCard product={product} onQuickView={setSelectedProduct} />
           </div>
         ))}
       </div>
@@ -159,20 +171,27 @@ export default function ProductGrid() {
                 </svg>
               </button>
 
-              {/* Vertical Preview Section - MODULATED COLOR */}
               <div className="w-full md:w-[45%] bg-background/50 flex items-center justify-center p-6 relative overflow-hidden">
-                <motion.img 
+                <motion.div 
                   initial={false}
                   animate={{ 
                     filter: selectedColor === 'Void' ? 'brightness(0.2) grayscale(1)' : 
                             selectedColor === 'Neon Surge' ? 'hue-rotate(180deg) saturate(1.5)' : 
-                            'none'
+                            'none',
+                    opacity: [0.8, 1],
+                    scale: [0.98, 1]
                   }}
+                  key={selectedColor}
                   transition={{ duration: 0.5 }}
-                  src={selectedProduct.image} 
-                  alt={selectedProduct.name} 
-                  className="w-full h-full object-contain drop-shadow-2xl z-10" 
-                />
+                  className="relative w-full h-[300px] md:h-full"
+                >
+                  <Image 
+                    src={selectedProduct.colorVariations?.find(v => v.color === selectedColor)?.image || selectedProduct.image} 
+                    alt={selectedProduct.name} 
+                    fill
+                    className="object-contain drop-shadow-2xl z-10" 
+                  />
+                </motion.div>
               </div>
 
               {/* Details Section */}
@@ -190,7 +209,7 @@ export default function ProductGrid() {
                   <div className="flex flex-col gap-3">
                     <span className="text-[10px] font-bold text-foreground/60 uppercase tracking-[0.1em]">Select Color</span>
                     <div className="flex gap-2">
-                      {['Black', 'DarkGrey', 'Blue'].map(tone => (
+                      {(selectedProduct.colorVariations?.map(v => v.color) || ['Black', 'DarkGrey', 'Blue']).map(tone => (
                         <button 
                           key={tone} 
                           onClick={(e) => { e.stopPropagation(); setSelectedColor(tone); }}
@@ -252,8 +271,8 @@ export default function ProductGrid() {
             exit={{ opacity: 0, y: 50, x: '-50%' }}
             className="fixed bottom-8 left-1/2 z-[1500] bg-surface border border-border shadow-2xl shadow-accent/10 rounded-2xl p-4 flex items-center gap-4 min-w-[340px] md:min-w-[400px] backdrop-blur-2xl"
           >
-            <div className="w-12 h-12 rounded-xl bg-background overflow-hidden shrink-0 border border-border">
-               <img src={notification.product.image} alt={notification.product.name} className="w-full h-full object-cover" />
+            <div className="w-12 h-12 rounded-xl bg-background overflow-hidden shrink-0 border border-border relative">
+               <Image src={notification.product.image} alt={notification.product.name} fill className="object-cover" />
             </div>
             <div className="flex flex-col flex-grow">
                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent mb-0.5">Added to Cart</span>

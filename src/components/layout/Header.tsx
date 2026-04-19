@@ -10,8 +10,8 @@ export default function Header() {
   return (
     <header className="w-full border-b border-border sticky top-0 bg-background/40 backdrop-blur-3xl z-50 transition-colors duration-500">
       <div className="max-w-[1600px] mx-auto px-8 h-24 flex items-center justify-between gap-8">
-        <Link href="/" className="font-sans font-black text-xl md:text-2xl tracking-[0.1em] uppercase text-foreground cursor-pointer hover:text-nebula transition-colors shrink-0">
-          FIT AND FAB
+        <Link href="/" className="font-sans font-black text-xl md:text-2xl tracking-[0.1em] uppercase text-foreground cursor-pointer hover:text-accent transition-colors shrink-0">
+          GESTAR
         </Link>
         
         {/* Real-time Reactive Search Bar */}

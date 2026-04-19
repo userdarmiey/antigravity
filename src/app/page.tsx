@@ -41,7 +41,7 @@ export default function Home() {
   };
 
   return (
-    <div className="w-full bg-background overflow-x-hidden relative transition-colors duration-500">
+    <div className="w-full bg-[#050505] text-[#FAFAFA] overflow-x-hidden relative transition-colors duration-500">
       {/* GLOBAL GRAIN OVERLAY */}
       <div className="fixed inset-0 z-[100] pointer-events-none opacity-[0.04] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
       
@@ -298,7 +298,7 @@ export default function Home() {
             Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">Story</span>
           </h2>
           <p className="text-nebula text-lg md:text-2xl leading-relaxed max-w-4xl opacity-90 font-medium">
-            Looking good is a choice. <span className="font-bold text-foreground">FIT AND FAB</span> is made for people who want to look fresh. We make comfortable and stylish clothes for your everyday outing. No stress, just great clothes for the city.
+            Style is an orbit, not a destination. <span className="font-bold text-foreground">GESTAR</span> is engineered for those who refuse to blend in. We craft premium silhouettes that define the modern street landscape. No compromises, just pure stellar aesthetics for the city.
           </p>
         </motion.div>
       </motion.section>

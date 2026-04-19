@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useStore } from '@/store/useStore';
 
 export default function CartDrawer() {
@@ -81,7 +82,7 @@ export default function CartDrawer() {
                    className="flex gap-6 group"
                 >
                   <div className="w-20 h-24 bg-white/5 rounded-2xl overflow-hidden relative shrink-0">
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700" />
+                    <Image src={item.image} alt={item.name} fill className="object-cover group-hover:scale-110 transition-all duration-700" />
                   </div>
                   <div className="flex-1 flex flex-col justify-between py-1">
                     <div className="flex flex-col gap-1">

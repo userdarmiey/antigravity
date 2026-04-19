@@ -63,7 +63,7 @@ export default function TrackOrder() {
                 type="text" 
                 value={trackingId}
                 onChange={(e) => setTrackingId(e.target.value)}
-                placeholder="e.g. FAF-893048"
+                placeholder="e.g. GSR-893048"
                 className="w-full bg-background border border-border rounded-xl px-4 py-4 text-sm font-mono text-foreground focus:outline-none focus:border-accent transition-colors"
                 required
               />
