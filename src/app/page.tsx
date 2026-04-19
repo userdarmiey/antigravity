@@ -138,7 +138,7 @@ export default function Home() {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 1, ease: "easeOut" }}
         id="products" 
-        className="bg-transparent w-full pt-20 pb-40 relative z-10 border-t border-border"
+        className="bg-transparent w-full pt-16 pb-32 relative z-10 border-t border-border"
       >
         <div className="max-w-[1700px] mx-auto w-full">
            <CategoriesRow />
@@ -153,7 +153,7 @@ export default function Home() {
       <LaunchCountdown />
 
       {/* WHAT THE FAM SAYS - SOCIAL PROOF */}
-      <section className="py-32 bg-surface/20 border-t border-border relative z-10 overflow-hidden">
+      <section className="py-24 bg-surface/10 border-t border-border relative z-10 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col items-center text-center mb-20">
             <span className="text-accent text-[10px] uppercase tracking-[0.4em] font-black mb-4">Reviews</span>
@@ -195,7 +195,7 @@ export default function Home() {
       </section>
 
       {/* REFERRAL CONTEST SECTION */}
-      <section className="py-32 border-t border-border relative z-10 overflow-hidden bg-surface/5">
+      <section className="py-24 border-t border-border relative z-10 overflow-hidden bg-surface/5">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col items-center text-center mb-20">
             <span className="text-accent text-[10px] uppercase tracking-[0.5em] font-black mb-4">Community Contest</span>
@@ -249,7 +249,7 @@ export default function Home() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="bg-transparent w-full py-48 border-t border-border relative z-10 overflow-hidden"
+        className="bg-transparent w-full py-32 border-t border-border relative z-10 overflow-hidden"
       >
         <div className="absolute inset-0 z-0 bg-transparent flex items-center justify-center">
           <motion.div 

@@ -18,69 +18,46 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       >
 
       <div className="group relative w-[240px] md:w-[400px] h-[340px] md:h-[580px] transition-all duration-700 select-none shrink-0">
-        <div className="absolute inset-0 bg-surface/40 backdrop-blur-3xl border border-border group-hover:border-accent/40 group-hover:shadow-[0_10px_60px_rgba(0,0,0,0.4)] transition-all duration-700 rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden">
-          {/* Discount Pill */}
-          <div className="absolute top-4 left-4 z-30">
-            <div className="bg-[#ff2a5f] text-white px-2 py-0.5 md:px-3 md:py-1 rounded-sm text-[8px] md:text-[10px] font-black tracking-wider shadow-lg">
+        <div className="absolute inset-0 bg-surface/30 backdrop-blur-3xl border border-white/5 group-hover:border-accent/20 transition-all duration-700 rounded-[2rem] overflow-hidden">
+          {/* Subtle Discount Pill */}
+          <div className="absolute top-5 left-5 z-30">
+            <div className="bg-accent text-white px-3 py-1 rounded-lg text-[9px] font-black tracking-widest uppercase shadow-lg">
               {Math.floor((product.price % 5) + 1)}% OFF
             </div>
           </div>
 
-          <div className="absolute bottom-[100px] left-4 z-30 md:bottom-[150px]">
-            <div className="bg-accent/80 backdrop-blur-md text-white px-2 py-0.5 md:px-3 md:py-1 rounded-sm text-[8px] md:text-[10px] font-black tracking-widest uppercase shadow-lg border border-white/10">
-              Limited Drop
-            </div>
-          </div>
-          {/* Neon Category Header */}
-          <div className="absolute top-4 right-4 md:top-6 md:right-6 z-20">
-            <div className="bg-surface/80 backdrop-blur-md px-3 py-1.5 md:px-4 md:py-1.5 rounded-full border border-accent/50 shadow-[0_0_15px_var(--accent)] hidden md:flex">
-              <span className="text-[8px] md:text-[9px] font-black text-accent tracking-[0.2em] uppercase">
-                {product.category}
-              </span>
-            </div>
-          </div>
-
-          {/* Product Centered - Dark Silhouette Style */}
-          <div className="absolute inset-x-0 top-12 bottom-[90px] md:bottom-32 flex items-center justify-center p-2 md:p-8">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--accent)_0%,transparent_70%)] opacity-0 group-hover:opacity-[0.05] transition-opacity duration-1000" />
+          {/* Product Image Area */}
+          <div className="absolute inset-x-0 top-12 bottom-24 md:bottom-32 flex items-center justify-center p-6 md:p-10">
             <img
               src={product.image}
               alt={product.name}
-              className="w-full h-full object-contain filter drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] md:drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-1000"
+              className="w-full h-full object-contain filter drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] group-hover:scale-105 transition-transform duration-1000"
             />
           </div>
 
-          {/* Info Area */}
-          <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
-            <div className="flex flex-col gap-1 md:gap-1.5">
-              <div className="hidden md:flex items-center gap-1.5 md:gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-accent shadow-[0_0_8px_var(--accent)]" />
-                <span className="text-[7px] md:text-[9px] font-bold text-accent/60 tracking-[0.4em] uppercase">SYSTEM.ARCHIVE</span>
-              </div>
-              <h3 className="text-[11px] md:text-[20px] font-black text-foreground tracking-tight uppercase leading-tight mt-0 md:mt-1 group-hover:text-accent transition-colors line-clamp-1">
+          {/* Clean Info Area */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+            <div className="flex flex-col gap-1">
+              <span className="text-[9px] font-black text-accent tracking-[0.3em] uppercase opacity-60">
+                {product.category}
+              </span>
+              <h3 className="text-sm md:text-xl font-black text-foreground uppercase tracking-tight line-clamp-1">
                 {product.name}
               </h3>
             </div>
 
-            <div className="flex items-center justify-between mt-3 md:mt-8 pt-3 md:pt-5 border-t border-border">
-              <div className="flex flex-col">
-                <span className="text-[8px] md:text-[10px] text-foreground/20 font-bold uppercase tracking-widest hidden md:inline-block">COST</span>
-                <span className="text-[16px] md:text-2xl font-black text-foreground tracking-tighter italic">
-                  ₦{product.price.toLocaleString()}
-                </span>
-              </div>
-              <div className="flex flex-col items-end gap-1">
-                <span className="text-[7px] md:text-[9px] font-black text-accent/50 uppercase tracking-[0.3em] hidden md:inline-block">RESERVE</span>
-                <button
-                  className="w-7 h-7 md:w-10 md:h-10 rounded-full border border-accent/30 flex items-center justify-center bg-accent/5 group-hover:bg-accent group-hover:shadow-[0_0_20px_var(--accent)] transition-all pointer-events-none"
-                >
-                  <svg className="w-3.5 h-3.5 md:w-4 md:h-4 text-accent group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 4v16m8-8H4" />
-                  </svg>
-                </button>
+            <div className="flex items-center justify-between mt-4">
+              <span className="text-xl md:text-2xl font-black text-foreground italic">
+                ₦{product.price.toLocaleString()}
+              </span>
+              <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-accent group-hover:border-transparent group-hover:shadow-[0_0_20px_var(--accent)] transition-all">
+                <svg className="w-4 h-4 text-foreground group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 4v16m8-8H4" />
+                </svg>
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
       </motion.div>
