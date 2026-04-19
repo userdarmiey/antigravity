@@ -27,12 +27,34 @@ export default function ProductGrid() {
     async function fetchProducts() {
       setLoading(true);
       const { data, error } = await supabase.from('products').select('*');
-      if (data) {
-        const incrementedData = data.map((p, idx) => ({
+        let enrichedData = data.map((p, idx) => ({
           ...p,
-          price: 15000 + ((idx % 6) * 5000) // Ranges: 15k, 20k, 25k, 30k, 35k, 40k
+          price: 15000 + ((idx % 6) * 5000)
         }));
-        setProducts(incrementedData);
+
+        // Ensure we have 8 items as requested
+        if (enrichedData.length < 8) {
+          const missingCount = 8 - enrichedData.length;
+          const extras = [
+            { id: 'arc-008', name: 'Premium Oversized Tee', price: 25000, category: 'Tees', image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=800' },
+            { id: 'arc-009', name: 'Street Cargo Pants', price: 35000, category: 'Pants', image: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&q=80&w=800' }
+          ];
+          enrichedData = [...enrichedData, ...extras.slice(0, missingCount)];
+        }
+        
+        setProducts(enrichedData.slice(0, 8));
+      } else {
+        // Fallback for empty DB
+        setProducts([
+          { id: '1', name: 'Archive Hoodie v1', price: 35000, category: 'Hoodies', image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=800' },
+          { id: '2', name: 'Street Tee Black', price: 15000, category: 'Tees', image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=800' },
+          { id: '3', name: 'Urban Cargo Pants', price: 40000, category: 'Pants', image: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&q=80&w=800' },
+          { id: '4', name: 'Cyberpunk Cap', price: 12000, category: 'Accessories', image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&q=80&w=800' },
+          { id: '5', name: 'Nomad Hoodie', price: 32000, category: 'Hoodies', image: 'https://images.unsplash.com/photo-1578932750294-f5075e85f44a?auto=format&fit=crop&q=80&w=800' },
+          { id: '6', name: 'Boxy Fit Tee', price: 18000, category: 'Tees', image: 'https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&q=80&w=800' },
+          { id: '7', name: 'Lounge Joggers', price: 28000, category: 'Pants', image: 'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&q=80&w=800' },
+          { id: '8', name: 'Premium Oversized Tee', price: 25000, category: 'Tees', image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=800' }
+        ]);
       }
       setLoading(false);
     }
