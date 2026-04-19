@@ -190,38 +190,50 @@ export default function Home() {
         </div>
       </section>
 
-      {/* LOOKBOOK SECTION */}
-      <section className="py-32 border-t border-border relative z-10 overflow-hidden">
-        <div className="max-w-[1700px] mx-auto px-6">
-          <div className="flex flex-col items-center text-center mb-24">
-            <span className="text-accent text-[10px] uppercase tracking-[0.5em] font-black mb-4">Summer '24 Archive</span>
-            <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none italic">Shop the <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">Fit</span></h2>
+      {/* REFERRAL CONTEST SECTION */}
+      <section className="py-32 border-t border-border relative z-10 overflow-hidden bg-surface/5">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col items-center text-center mb-20">
+            <span className="text-accent text-[10px] uppercase tracking-[0.5em] font-black mb-4">Community Contest</span>
+            <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none italic">Share <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">&</span> Win</h2>
+            <p className="text-nebula text-lg mt-8 max-w-xl">Invite your friends to the fam and win free clothes every month. It's that simple.</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {[
-              { title: "Urban Explorer", desc: "Heavy jersey hoodie + Cargo setup", img: "https://picsum.photos/seed/look1/800/1000" },
-              { title: "Midnight Tech", desc: "Oversized graphic tee + Tech shorts", img: "https://picsum.photos/seed/look2/800/1000" }
-            ].map((look, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="relative group rounded-[3rem] overflow-hidden border border-border aspect-[4/5]"
-              >
-                <img src={look.img} alt={look.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60 md:opacity-0 group-hover:opacity-60 transition-opacity duration-500" />
-                
-                <div className="absolute bottom-12 left-12 right-12 flex flex-col items-start transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <span className="text-accent text-[10px] font-black uppercase tracking-widest mb-2">{look.title}</span>
-                  <h3 className="text-2xl md:text-3xl font-black text-white uppercase mb-4">{look.desc}</h3>
-                  <button className="px-8 py-4 bg-white text-black text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-accent hover:text-white transition-all">
-                    Shop This Fit
-                  </button>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Step 1 */}
+            <div className="bg-surface/40 backdrop-blur-3xl border border-border p-10 rounded-[3rem] flex flex-col items-center text-center gap-6 group hover:border-accent/40 transition-all">
+               <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center font-black text-2xl text-accent border border-accent/20">1</div>
+               <h3 className="text-xl font-black uppercase tracking-tight">Get Your Link</h3>
+               <p className="text-foreground/60 text-sm">Sign up for an account and get your own unique sharing link in seconds.</p>
+            </div>
+            {/* Step 2 */}
+            <div className="bg-surface/40 backdrop-blur-3xl border border-border p-10 rounded-[3rem] flex flex-col items-center text-center gap-6 group hover:border-accent/40 transition-all">
+               <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center font-black text-2xl text-accent border border-accent/20">2</div>
+               <h3 className="text-xl font-black uppercase tracking-tight">Share the Vibe</h3>
+               <p className="text-foreground/60 text-sm">Send your link to your friends. When they buy their first fit, you get points.</p>
+            </div>
+            {/* Step 3 */}
+            <div className="bg-surface/40 backdrop-blur-3xl border border-border p-10 rounded-[3rem] flex flex-col items-center text-center gap-6 group hover:border-accent/40 transition-all">
+               <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center font-black text-2xl text-accent border border-accent/20">3</div>
+               <h3 className="text-xl font-black uppercase tracking-tight">Win Big</h3>
+               <p className="text-foreground/60 text-sm">Top 3 people on the leaderboard every month win a ₦50,000 shopping voucher.</p>
+            </div>
+          </div>
+
+          <div className="mt-20 flex flex-col items-center">
+             <button className="px-12 py-6 bg-foreground text-background text-xs font-black uppercase tracking-[0.4em] rounded-2xl hover:bg-accent hover:text-white transition-all shadow-2xl">
+                Join the Contest
+             </button>
+             <div className="mt-8 flex items-center gap-4">
+                <div className="flex -space-x-3">
+                   {[1,2,3,4].map(i => (
+                     <div key={i} className="w-8 h-8 rounded-full border-2 border-background bg-surface overflow-hidden">
+                        <img src={`https://i.pravatar.cc/100?u=${i}`} alt="user" />
+                     </div>
+                   ))}
                 </div>
-              </motion.div>
-            ))}
+                <span className="text-[10px] font-bold text-foreground/40 uppercase tracking-widest">1,200+ people joined already</span>
+             </div>
           </div>
         </div>
       </section>
