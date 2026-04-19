@@ -7,13 +7,8 @@ export default function NewsletterPopup() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const subscribed = localStorage.getItem('newsletter-subscribed');
-    const closed = sessionStorage.getItem('newsletter-closed');
-    
-    if (!subscribed && !closed) {
-      const timer = setTimeout(() => setIsVisible(true), 15000); // 15 seconds delay
-      return () => clearTimeout(timer);
-    }
+    const timer = setTimeout(() => setIsVisible(true), 5000); // 5 seconds delay
+    return () => clearTimeout(timer);
   }, []);
 
   const handleClose = () => {
