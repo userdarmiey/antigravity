@@ -127,23 +127,23 @@ export default function Home() {
         </motion.div>
       </div>
 
-      {/* LIVE ACTIVITY TICKER */}
-      <div className="w-full bg-accent py-4 overflow-hidden relative z-10 border-y border-white/10">
-        <motion.div 
-          animate={{ x: [0, -1000] }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="flex whitespace-nowrap gap-20 items-center justify-center"
-        >
-          {[...Array(10)].map((_, i) => (
-            <div key={i} className="flex items-center gap-4">
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white">Latest Activity:</span>
-              <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/80">Seyi from Lagos just copped a Solo Leveling Tee</span>
-              <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-              <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/80">Bolaji from Abuja joined the newsletter</span>
-              <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+      {/* STORE FEATURES ROW */}
+      <div className="w-full bg-surface/40 backdrop-blur-md py-6 overflow-hidden relative z-10 border-y border-white/5">
+        <div className="max-w-[1700px] mx-auto px-6 flex flex-wrap justify-center gap-8 md:gap-24">
+          {[
+            { icon: "🚚", title: "Fast Delivery", text: "Ships in 24-48 hours" },
+            { icon: "💎", title: "Premium Quality", text: "100% Quality cotton" },
+            { icon: "🛡️", title: "Secure Pay", text: "Safe & Fast checkout" }
+          ].map((feature, i) => (
+            <div key={i} className="flex items-center gap-4 group">
+               <div className="text-2xl grayscale group-hover:grayscale-0 transition-all">{feature.icon}</div>
+               <div className="flex flex-col">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-foreground">{feature.title}</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-foreground/30">{feature.text}</span>
+               </div>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
 
       {/* COLLECTION SECTION */}
