@@ -190,33 +190,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SOCIAL FEED */}
-      <section className="py-32 border-t border-border relative z-10">
+      {/* LOOKBOOK SECTION */}
+      <section className="py-32 border-t border-border relative z-10 overflow-hidden">
         <div className="max-w-[1700px] mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-            <div className="flex flex-col gap-4">
-              <span className="text-accent text-xs font-black uppercase tracking-[0.4em]">Instagram</span>
-              <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none">Find us <br/> on the Gram</h2>
-            </div>
-            <a href="https://instagram.com" target="_blank" className="px-10 py-5 border border-border rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-foreground hover:text-background transition-all">
-              @fitandfabofficials
-            </a>
+          <div className="flex flex-col items-center text-center mb-24">
+            <span className="text-accent text-[10px] uppercase tracking-[0.5em] font-black mb-4">Summer '24 Archive</span>
+            <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none italic">Shop the <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">Fit</span></h2>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {[1,2,3,4,5,6].map(i => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {[
+              { title: "Urban Explorer", desc: "Heavy jersey hoodie + Cargo setup", img: "https://picsum.photos/seed/look1/800/1000" },
+              { title: "Midnight Tech", desc: "Oversized graphic tee + Tech shorts", img: "https://picsum.photos/seed/look2/800/1000" }
+            ].map((look, i) => (
               <motion.div 
                 key={i}
-                whileHover={{ scale: 0.98 }}
-                className="aspect-square bg-surface border border-border rounded-3xl overflow-hidden relative group cursor-pointer"
+                initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="relative group rounded-[3rem] overflow-hidden border border-border aspect-[4/5]"
               >
-                <img src={`https://picsum.photos/seed/streetwear-${i}/600/600`} alt="social" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
-                <div className="absolute inset-0 bg-accent/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                   <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center">
-                      <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                      </svg>
-                   </div>
+                <img src={look.img} alt={look.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60 md:opacity-0 group-hover:opacity-60 transition-opacity duration-500" />
+                
+                <div className="absolute bottom-12 left-12 right-12 flex flex-col items-start transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <span className="text-accent text-[10px] font-black uppercase tracking-widest mb-2">{look.title}</span>
+                  <h3 className="text-2xl md:text-3xl font-black text-white uppercase mb-4">{look.desc}</h3>
+                  <button className="px-8 py-4 bg-white text-black text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-accent hover:text-white transition-all">
+                    Shop This Fit
+                  </button>
                 </div>
               </motion.div>
             ))}
