@@ -4,7 +4,7 @@ import { MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function WhatsAppSupport() {
-  const whatsappNumber = "2348000000000"; // Placeholder
+  const whatsappNumber = "2349168670141"; 
   const message = "Hi Fit and Fab! I need help with an order.";
 
   const handleClick = () => {
