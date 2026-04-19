@@ -6,6 +6,7 @@ import ProductGrid from "@/components/products/ProductGrid";
 import CategoriesRow from "@/components/products/CategoriesRow";
 import { motion, useScroll, useSpring } from "framer-motion";
 import LaunchCountdown from "@/components/ui/Countdown";
+import ProcessAnimation from "@/components/ui/ProcessAnimation";
 
 export default function Home() {
   const subtext = "Premium streetwear that fits you perfectly. We make clothes that make you look good and stand out from everyone else.";
@@ -127,24 +128,8 @@ export default function Home() {
         </motion.div>
       </div>
 
-      {/* STORE FEATURES ROW */}
-      <div className="w-full bg-surface/40 backdrop-blur-md py-6 overflow-hidden relative z-10 border-y border-white/5">
-        <div className="max-w-[1700px] mx-auto px-6 flex flex-wrap justify-center gap-8 md:gap-24">
-          {[
-            { icon: "🚚", title: "Fast Delivery", text: "Ships in 24-48 hours" },
-            { icon: "💎", title: "Premium Quality", text: "100% Quality cotton" },
-            { icon: "🛡️", title: "Secure Pay", text: "Safe & Fast checkout" }
-          ].map((feature, i) => (
-            <div key={i} className="flex items-center gap-4 group">
-               <div className="text-2xl grayscale group-hover:grayscale-0 transition-all">{feature.icon}</div>
-               <div className="flex flex-col">
-                  <span className="text-[10px] font-black uppercase tracking-widest text-foreground">{feature.title}</span>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-foreground/30">{feature.text}</span>
-               </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      {/* PROCESS ANIMATION SECTION */}
+      <ProcessAnimation />
 
       {/* COLLECTION SECTION */}
       <motion.section 
