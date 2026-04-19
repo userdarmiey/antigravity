@@ -165,6 +165,8 @@ export default function Home() {
              ))}
            </div>
         </div>
+      </section>
+
       {/* PRODUCT GRID SECTION */}
       <section id="products" className="py-24 border-t border-border relative z-10 bg-surface/5">
         <div className="max-w-[1700px] mx-auto">
