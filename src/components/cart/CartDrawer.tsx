@@ -137,8 +137,22 @@ export default function CartDrawer() {
                      ₦{(cartTotal() + (cartTotal() >= 50000 || cart.length === 0 ? 0 : 2500)).toLocaleString()}
                    </span>
                 </div>
-                
-                <div className="flex justify-between items-center bg-white/5 p-4 rounded-xl border border-white/5 mt-2">
+
+                {/* Coupon Code Section */}
+                <div className="mt-6 border-t border-white/5 pt-6">
+                  <div className="flex gap-2">
+                    <input 
+                      type="text" 
+                      placeholder="Coupon Code" 
+                      className="flex-1 bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-[10px] font-black tracking-widest uppercase outline-none focus:border-accent transition-all placeholder:text-foreground/20"
+                    />
+                    <button className="px-6 py-3 bg-white/5 border border-white/5 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-accent hover:border-transparent transition-all">
+                      Apply
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex justify-between items-center bg-white/5 p-4 rounded-xl border border-white/5 mt-4">
                    <span className="text-[8px] font-black uppercase tracking-widest text-accent">Payment Secured</span>
                    <div className="flex gap-1.5">
                       {[1,2,3].map(i => <div key={i} className="w-1 h-1 bg-accent rounded-full animate-pulse" />)}

@@ -132,28 +132,39 @@ export default function Home() {
       <ProcessAnimation />
 
       {/* COLLECTION SECTION */}
-      {/* JUMIA STYLE QUICK CATEGORIES */}
-      <section className="py-20 relative z-10 overflow-hidden">
+      {/* FEATURED CATEGORIES - PREMIUM CARDS */}
+      <section className="py-24 relative z-10 overflow-hidden">
         <div className="max-w-[1700px] mx-auto px-6">
-           <div className="grid grid-cols-4 md:grid-cols-8 gap-4 md:gap-8">
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
              {[
-               { name: "Archive", icon: "📦" },
-               { name: "New Drops", icon: "🔥" },
-               { name: "Hoodies", icon: "🧥" },
-               { name: "Tees", icon: "👕" },
-               { name: "Cap", icon: "🧢" },
-               { name: "Pants", icon: "👖" },
-               { name: "Best Sales", icon: "📈" },
-               { name: "Support", icon: "💬" }
+               { name: "Archive Hoodie", desc: "Heavyweight Boxy Fit", image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=800", color: "from-blue-500/20" },
+               { name: "Street Tees", desc: "Premium Cotton Drops", image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=800", color: "from-accent/20" },
+               { name: "The Vault", desc: "Old School Grails", image: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&q=80&w=800", color: "from-purple-500/20" }
              ].map((cat, i) => (
-               <div key={i} className="flex flex-col items-center gap-4 group cursor-pointer">
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-surface/40 backdrop-blur-xl border border-white/5 flex items-center justify-center text-2xl group-hover:bg-accent/10 group-hover:border-accent/30 transition-all duration-500">
-                    {cat.icon}
-                  </div>
-                  <span className="text-[10px] font-black uppercase tracking-widest text-foreground/40 group-hover:text-accent transition-colors">
-                    {cat.name}
-                  </span>
-               </div>
+               <motion.div 
+                 key={i}
+                 initial={{ opacity: 0, y: 20 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ once: true }}
+                 transition={{ delay: i * 0.1 }}
+                 className="relative h-[400px] md:h-[500px] rounded-[2.5rem] overflow-hidden group cursor-pointer border border-white/5"
+               >
+                 <img src={cat.image} className="absolute inset-0 w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-110" />
+                 <div className={`absolute inset-0 bg-gradient-to-t ${cat.color} to-transparent opacity-60`} />
+                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+                 
+                 <div className="absolute bottom-10 left-10">
+                    <span className="text-[10px] font-black uppercase tracking-[0.4em] text-accent mb-2 block">Collection</span>
+                    <h3 className="text-3xl font-black uppercase tracking-tight text-white mb-2">{cat.name}</h3>
+                    <p className="text-foreground/60 text-sm font-medium">{cat.desc}</p>
+                 </div>
+                 
+                 <div className="absolute top-10 right-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center">
+                       <ArrowIcon className="w-5 h-5 text-black" />
+                    </div>
+                 </div>
+               </motion.div>
              ))}
            </div>
         </div>
