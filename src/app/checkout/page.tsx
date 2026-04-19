@@ -8,6 +8,7 @@ import { createClient } from '@/utils/supabase/client';
 export default function CheckoutPage() {
   const { cart, cartTotal, clearCart } = useStore();
   const [isProcessing, setIsProcessing] = useState(false);
+  const [successData, setSuccessData] = useState<{ id: string; email: string } | null>(null);
   const [formData, setFormData] = useState({ name: '', email: '', address: '' });
   const supabase = createClient();
   
