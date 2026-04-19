@@ -53,7 +53,7 @@ export default function Home() {
             initial={{ scale: 1.1, opacity: 0 }}
             animate={{ scale: 1, opacity: 0.4 }}
             transition={{ duration: 2, ease: "easeOut" }}
-            className="absolute inset-0 bg-[url('/streetwear_hero_model_1776012629243.png')] bg-cover bg-center grayscale contrast-125"
+            className="absolute inset-0 bg-[url('/streetwear_hero_model_1776012629243.png')] bg-cover bg-center contrast-125"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,var(--background)_80%)]" />
@@ -146,7 +146,7 @@ export default function Home() {
                  transition={{ delay: i * 0.1 }}
                  className="relative h-[400px] md:h-[500px] rounded-[2.5rem] overflow-hidden group cursor-pointer border border-white/5"
                >
-                 <img src={cat.image} className="absolute inset-0 w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-110" />
+                 <img src={cat.image} className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" />
                  <div className={`absolute inset-0 bg-gradient-to-t ${cat.color} to-transparent opacity-60`} />
                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
                  

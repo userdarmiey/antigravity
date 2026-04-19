@@ -27,6 +27,8 @@ export default function ProductGrid() {
     async function fetchProducts() {
       setLoading(true);
       const { data, error } = await supabase.from('products').select('*');
+      
+      if (data) {
         let enrichedData = data.map((p, idx) => ({
           ...p,
           price: 15000 + ((idx % 6) * 5000)
