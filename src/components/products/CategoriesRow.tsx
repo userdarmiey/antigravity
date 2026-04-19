@@ -1,18 +1,44 @@
+"use client";
 import React from 'react';
+import { motion } from 'framer-motion';
+import { useStore } from '@/store/useStore';
 
 const categories = [
-  { name: "Solo Leveling Collection", items: "21 Items Available", image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=800" },
-  { name: "Plain Wear", items: "14 Items Available", image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=800" },
-  { name: "FNS Essentials", items: "12 Items Available", image: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&q=80&w=800" },
-  { name: "Premium Pants", items: "8 Items Available", image: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&q=80&w=800" }
+  { name: "Solo Leveling", keyword: "Solo", items: "21 Items Available", image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=800" },
+  { name: "Plain Wear", keyword: "Plain", items: "14 Items Available", image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=800" },
+  { name: "FNF Essentials", keyword: "", items: "12 Items Available", image: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&q=80&w=800" },
+  { name: "Premium Pants", keyword: "Pant", items: "8 Items Available", image: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&q=80&w=800" },
+  { name: "Light Shorts", keyword: "Short", items: "5 Items Available", image: "https://images.unsplash.com/photo-1593032465175-481ac7f401a0?auto=format&fit=crop&q=80&w=800" }
 ];
 
+const duplicatedCategories = [...categories, ...categories];
+
 export default function CategoriesRow() {
+  const setSearchQuery = useStore((state) => state.setSearchQuery);
+
+  const handleCategoryClick = (keyword: string) => {
+    setSearchQuery(keyword);
+    // Smooth scroll straight down to the products list
+    document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <div className="w-full relative px-0 md:px-12 mb-20">
-       <div className="flex gap-4 md:gap-6 overflow-x-auto no-scrollbar pb-8 snap-x px-6 md:px-0 scroll-smooth">
-          {categories.map((cat, idx) => (
-             <div key={idx} className="relative w-[280px] md:w-[400px] h-[220px] md:h-[280px] shrink-0 rounded-[2rem] overflow-hidden snap-start group cursor-pointer shadow-xl border border-border">
+    <div className="w-full relative mb-24 overflow-hidden Group pb-4">
+       {/* Gradient masks for smooth fade over edges */}
+       <div className="absolute top-0 bottom-0 left-0 w-12 md:w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+       <div className="absolute top-0 bottom-0 right-0 w-12 md:w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+
+       <motion.div 
+         animate={{ x: ['0%', '-50%'] }} 
+         transition={{ ease: "linear", duration: 35, repeat: Infinity }}
+         className="flex gap-4 md:gap-6 w-max"
+       >
+          {duplicatedCategories.map((cat, idx) => (
+             <div 
+               key={idx} 
+               onClick={() => handleCategoryClick(cat.keyword)}
+               className="relative w-[280px] md:w-[400px] h-[220px] md:h-[280px] shrink-0 rounded-[2rem] overflow-hidden group cursor-pointer shadow-xl border border-border"
+             >
                 <img src={cat.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100" alt={cat.name} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
                 <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 flex flex-col z-10 pointer-events-none">
@@ -21,7 +47,7 @@ export default function CategoriesRow() {
                 </div>
              </div>
           ))}
-       </div>
+       </motion.div>
     </div>
   );
 }
