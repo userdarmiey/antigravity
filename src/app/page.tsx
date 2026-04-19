@@ -108,9 +108,9 @@ export default function Home() {
           
           <motion.p 
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.4 }}
+            animate={{ opacity: 0.8 }}
             transition={{ delay: 1, duration: 1 }}
-            className="mt-12 max-w-lg text-center text-foreground text-xs md:text-sm tracking-[0.2em] font-medium leading-loose uppercase"
+            className="mt-12 max-w-lg text-center text-foreground/80 text-sm md:text-base font-medium leading-loose"
           >
             Built different. <br className="hidden md:block"/> Made for the streets.
           </motion.p>
@@ -123,9 +123,9 @@ export default function Home() {
           >
             <Link 
               href="#products" 
-              className="px-10 py-5 bg-foreground text-background text-[11px] font-black uppercase tracking-[0.4em] hover:bg-accent hover:text-white transition-all duration-300 shadow-[20px_20px_0_var(--border)]"
+              className="px-10 py-5 bg-foreground text-background text-[13px] font-black uppercase tracking-[0.2em] hover:bg-accent hover:text-white transition-all duration-300 shadow-[10px_10px_0_var(--border)]"
             >
-              Shop Direct
+              Shop Now
             </Link>
           </motion.div>
         </motion.div>
@@ -179,12 +179,12 @@ export default function Home() {
           transition={{ duration: 1, delay: 0.2 }}
           className="relative max-w-5xl mx-auto px-6 text-center z-10 flex flex-col items-center"
         >
-          <span className="text-accent tracking-[0.4em] text-[10px] md:text-xs uppercase font-bold mb-8">What We Stand For</span>
-          <h2 className="text-5xl md:text-8xl font-sans font-bold tracking-[0.1em] uppercase text-foreground mb-14 leading-none">
-            The <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">Philosophy</span>
+          <span className="text-accent tracking-[0.2em] text-xs uppercase font-bold mb-8">Why Choose Us</span>
+          <h2 className="text-4xl md:text-7xl font-sans font-bold tracking-[0.05em] uppercase text-foreground mb-10 leading-none">
+            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">Story</span>
           </h2>
-          <p className="text-nebula text-lg md:text-xl font-mono tracking-widest leading-relaxed max-w-5xl opacity-80">
-            Great style isn't given — it's chosen. <span className="font-bold text-foreground">FIT AND FAB</span> is built for people who take their look seriously. We make clothes that work as hard as you do, blending bold design with quality you can feel. No gimmicks. Just great fits for the modern city.
+          <p className="text-nebula text-lg md:text-2xl leading-relaxed max-w-4xl opacity-90 font-medium">
+            Looking good is a choice. <span className="font-bold text-foreground">FIT AND FAB</span> is made for people who want to look fresh. We make comfortable and stylish clothes for your everyday outing. No stress, just great clothes for the city.
           </p>
         </motion.div>
       </motion.section>

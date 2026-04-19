@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <header className="w-full border-b border-border sticky top-0 bg-background/80 backdrop-blur-xl z-50">
       <div className="max-w-[1600px] mx-auto px-8 h-24 flex items-center justify-between gap-8">
-        <Link href="/" className="font-sans font-bold text-4xl tracking-[0.15em] uppercase text-foreground cursor-pointer hover:text-nebula transition-colors shrink-0">
+        <Link href="/" className="font-sans font-black text-xl md:text-2xl tracking-[0.1em] uppercase text-foreground cursor-pointer hover:text-nebula transition-colors shrink-0">
           FIT AND FAB
         </Link>
         
@@ -28,7 +28,7 @@ export default function Header() {
           />
         </div>
 
-        <nav className="hidden lg:flex gap-12 text-xs uppercase tracking-[0.25em] text-nebula font-medium shrink-0">
+        <nav className="hidden lg:flex gap-12 text-sm uppercase tracking-[0.1em] text-nebula font-bold shrink-0">
           <Link href="/#products" className="hover:text-foreground transition-colors duration-500 relative group py-2">Shop</Link>
           <Link href="/#philosophy" className="hover:text-foreground transition-colors duration-500 relative group py-2">Our Story</Link>
         </nav>

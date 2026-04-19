@@ -74,9 +74,9 @@ export default function ProductGrid() {
       <div className="w-full h-[600px] flex flex-col items-center justify-center gap-6">
         <div className="relative">
           <div className="w-20 h-20 rounded-full border border-accent/20 border-t-accent animate-spin" />
-          <div className="absolute inset-0 flex items-center justify-center text-accent text-[8px] font-black uppercase tracking-[0.4em] animate-pulse">Sync</div>
+          <div className="absolute inset-0 flex items-center justify-center text-accent text-[8px] font-bold uppercase tracking-[0.2em] animate-pulse">Wait</div>
         </div>
-        <span className="text-foreground/20 text-[10px] font-black uppercase tracking-[0.5em] animate-pulse">Retrieving Inventory Matrix...</span>
+        <span className="text-foreground/80 text-xs font-bold uppercase tracking-[0.2em] animate-pulse">Loading Clothes...</span>
       </div>
     );
   }
@@ -86,10 +86,10 @@ export default function ProductGrid() {
       {/* System Status Header */}
       <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-16">
         <div className="flex flex-col items-center md:items-start gap-1">
-          <h2 className="text-foreground text-[10px] font-black tracking-[0.6em] uppercase opacity-40">System Architecture</h2>
+          <h2 className="text-foreground text-xs font-bold tracking-[0.3em] uppercase opacity-60">Available Now</h2>
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-accent animate-pulse shadow-[0_0_10px_var(--accent)]" />
-            <span className="text-accent font-mono text-[10px] tracking-[0.3em] font-black uppercase">Archive Matrix // Active</span>
+            <span className="text-accent font-sans text-xs tracking-[0.1em] font-bold uppercase">Live Stock</span>
           </div>
         </div>
         
@@ -131,9 +131,9 @@ export default function ProductGrid() {
 
         {/* Archival Spacer */}
         <div className="hidden md:flex min-w-[400px] items-center justify-center h-[300px]">
-          <div className="flex flex-col items-center gap-6 opacity-20">
+          <div className="flex flex-col items-center gap-6 opacity-40">
             <div className="w-16 h-[1px] bg-accent" />
-            <span className="text-[10px] font-black tracking-[0.5em] uppercase text-foreground font-mono italic">END OF LINE protocol</span>
+            <span className="text-xs font-bold tracking-[0.3em] uppercase text-foreground italic">End of Collection</span>
           </div>
         </div>
       </div>
@@ -193,13 +193,13 @@ export default function ProductGrid() {
                   </div>
 
                   <div className="flex flex-col gap-3">
-                    <span className="text-[9px] font-black text-foreground/40 uppercase tracking-[0.2em]">Available Tones</span>
+                    <span className="text-[10px] font-bold text-foreground/60 uppercase tracking-[0.1em]">Select Color</span>
                     <div className="flex gap-2">
-                      {['Carbon', 'Void', 'Neon Surge'].map(tone => (
+                      {['Black', 'DarkGrey', 'Blue'].map(tone => (
                         <button 
                           key={tone} 
                           onClick={(e) => { e.stopPropagation(); setSelectedColor(tone); }}
-                          className={`flex-1 py-3 border-2 rounded-xl text-[9px] font-black uppercase tracking-wider transition-all duration-300 ${
+                          className={`flex-1 py-3 border-2 rounded-xl text-[10px] font-bold uppercase tracking-wider transition-all duration-300 ${
                             selectedColor === tone 
                             ? "bg-accent text-white border-accent shadow-lg shadow-accent/20" 
                             : "bg-transparent text-foreground border-border hover:border-accent"
@@ -212,7 +212,7 @@ export default function ProductGrid() {
                   </div>
 
                   <div className="flex flex-col gap-3">
-                    <span className="text-[9px] font-black text-foreground/40 uppercase tracking-[0.2em]">Size Calibration</span>
+                    <span className="text-[10px] font-bold text-foreground/60 uppercase tracking-[0.1em]">Select Size</span>
                     <div className="flex gap-2">
                       {['S', 'M', 'L', 'XL'].map(size => (
                         <button 

@@ -65,28 +65,27 @@ export default function LaunchCountdown() {
         className="relative z-10 flex flex-col items-center gap-12 px-2"
       >
         <div className="flex flex-col items-center gap-4 text-center">
-           <div className="flex items-center gap-3 px-6 py-2 rounded-full border border-accent/20 bg-accent/5 backdrop-blur-md">
+           <div className="flex items-center gap-2 px-6 py-2 rounded-full border border-accent/20 bg-accent/5 backdrop-blur-md">
               <div className="w-2 h-2 rounded-full bg-accent animate-pulse shadow-[0_0_8px_var(--accent)]" />
-              <span className="text-[10px] uppercase font-black tracking-[0.5em] text-accent">Global Launch Sequence</span>
+              <span className="text-[12px] uppercase font-bold tracking-[0.2em] text-accent">Get Ready!</span>
            </div>
-           <h3 className="text-2xl md:text-4xl text-foreground font-black uppercase tracking-[0.2em] italic mt-4">Platform Boot Sequence</h3>
+           <h3 className="text-2xl md:text-4xl text-foreground font-black uppercase tracking-[0.1em] italic mt-4">We are launching in</h3>
         </div>
 
-        <div className="flex gap-2 md:gap-6 justify-center items-center">
+        <div className="flex gap-4 md:gap-8 justify-center items-center">
           {timeBlocks.map((block, idx) => (
             <React.Fragment key={block.label}>
-              <div className="flex flex-col items-center gap-3 min-w-[70px] md:min-w-[120px]">
-                <div className="w-full aspect-square bg-surface/80 backdrop-blur-md border border-accent/20 rounded-xl md:rounded-3xl flex items-center justify-center shadow-[0_0_20px_rgba(0,0,0,0.5)] md:shadow-[0_0_35px_rgba(0,0,0,0.5)] relative overflow-hidden group">
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-0" />
-                  <span className="text-3xl md:text-5xl lg:text-7xl font-mono font-black tabular-nums tracking-tighter text-accent drop-shadow-[0_0_12px_var(--accent)] relative z-10">
+              <div className="flex flex-col items-center gap-1 min-w-[50px] md:min-w-[90px]">
+                <div className="w-full flex items-center justify-center relative group">
+                  <span className="text-4xl md:text-6xl lg:text-8xl font-mono font-black tabular-nums tracking-tighter text-accent drop-shadow-[0_0_12px_var(--accent)] relative z-10">
                     {block.value.toString().padStart(2, '0')}
                   </span>
                 </div>
-                <span className="text-[8px] md:text-[10px] font-black tracking-[0.3em] uppercase text-foreground/40">{block.label}</span>
+                <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-foreground/60">{block.label}</span>
               </div>
               
               {idx < timeBlocks.length - 1 && (
-                <div className="flex flex-col items-center justify-center gap-2 md:gap-4 pb-6 md:pb-8">
+                <div className="flex flex-col items-center justify-center gap-2 md:gap-4 pb-4 md:pb-6">
                   <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-foreground/20" />
                   <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-foreground/20" />
                 </div>
