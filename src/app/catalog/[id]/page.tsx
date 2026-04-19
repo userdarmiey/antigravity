@@ -3,6 +3,7 @@ export const dynamic = 'force-dynamic';
 import React, { useEffect, useState } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import { Product } from '@/components/products/ProductCard';
+import { categories } from '@/components/products/CategoriesRow';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useStore } from '@/store/useStore';
 import Link from 'next/link';
@@ -22,6 +23,25 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
   useEffect(() => {
     async function fetchProduct() {
       setLoading(true);
+      
+      // Handle Mock Products for testing
+      if (params.id.startsWith('mock-')) {
+        const parts = params.id.split('-');
+        const keyword = parts[1] || 'Essentials';
+        const cat = categories.find(c => c.keyword === keyword);
+        const dummyImg = cat?.image || "";
+        
+        setProduct({
+          id: params.id,
+          name: keyword + " " + parts[2],
+          price: 25000,
+          category: keyword,
+          image: dummyImg
+        } as Product);
+        setLoading(false);
+        return;
+      }
+
       const { data, error } = await supabase
         .from('products')
         .select('*')
