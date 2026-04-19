@@ -76,9 +76,9 @@ export default function LaunchCountdown() {
           {timeBlocks.map((block, idx) => (
             <React.Fragment key={block.label}>
               <div className="flex flex-col items-center gap-3 min-w-[70px] md:min-w-[120px]">
-                <div className="w-full aspect-square bg-surface/80 backdrop-blur-md border border-border rounded-xl md:rounded-3xl flex items-center justify-center shadow-2xl relative overflow-hidden group">
+                <div className="w-full aspect-square bg-surface/80 backdrop-blur-md border border-accent/20 rounded-xl md:rounded-3xl flex items-center justify-center shadow-[0_0_20px_rgba(0,0,0,0.5)] md:shadow-[0_0_35px_rgba(0,0,0,0.5)] relative overflow-hidden group">
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-0" />
-                  <span className="text-3xl md:text-5xl lg:text-7xl font-mono font-black tabular-nums tracking-tighter text-foreground relative z-10">
+                  <span className="text-3xl md:text-5xl lg:text-7xl font-mono font-black tabular-nums tracking-tighter text-accent drop-shadow-[0_0_12px_var(--accent)] relative z-10">
                     {block.value.toString().padStart(2, '0')}
                   </span>
                 </div>

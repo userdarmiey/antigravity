@@ -29,7 +29,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </div>
 
           {/* Product Centered - Dark Silhouette Style */}
-          <div className="absolute inset-x-0 top-10 bottom-[95px] md:bottom-32 flex items-center justify-center p-2 md:p-8">
+          <div className="absolute inset-x-0 top-12 bottom-[90px] md:bottom-32 flex items-center justify-center p-2 md:p-8">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--accent)_0%,transparent_70%)] opacity-0 group-hover:opacity-[0.05] transition-opacity duration-1000" />
             <img
               src={product.image}
@@ -39,7 +39,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </div>
 
           {/* Info Area */}
-          <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 bg-surface/40 backdrop-blur-sm md:bg-transparent md:backdrop-blur-none">
+          <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
             <div className="flex flex-col gap-1 md:gap-1.5">
               <div className="hidden md:flex items-center gap-1.5 md:gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-accent shadow-[0_0_8px_var(--accent)]" />
