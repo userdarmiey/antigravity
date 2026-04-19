@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight as ArrowIcon } from "lucide-react";
 import ProductGrid from "@/components/products/ProductGrid";
 import { motion, useScroll, useSpring } from "framer-motion";
+import LaunchCountdown from "@/components/ui/Countdown";
 
 export default function Home() {
   const subtext = "Primal aesthetics from the edge of the universe. A distilled echelon of streetwear materiality.";
@@ -147,6 +148,9 @@ export default function Home() {
           <ProductGrid />
         </div>
       </motion.section>
+
+      {/* COUNTDOWN LAUNCH SECTION */}
+      <LaunchCountdown />
 
       {/* THE PHILOSOPHY SECTION */}
       <motion.section 
