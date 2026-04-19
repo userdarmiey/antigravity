@@ -120,13 +120,26 @@ export default function CartDrawer() {
             </div>
             
             <div className="relative z-10 pt-8 border-t border-white/5 mt-auto">
-              <div className="flex flex-col gap-6 mb-8">
-                <div className="flex justify-between items-end">
-                   <span className="text-foreground/40 uppercase tracking-widest text-[9px] font-black">Subtotal</span>
-                   <span className="text-2xl font-black tracking-tight">₦{cartTotal().toLocaleString()}</span>
+              <div className="flex flex-col gap-4 mb-8">
+                <div className="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-foreground/40">
+                   <span>Archived Total</span>
+                   <span>₦{cartTotal().toLocaleString()}</span>
                 </div>
-                <div className="flex justify-between items-center bg-white/5 p-4 rounded-xl border border-white/5">
-                   <span className="text-[8px] font-black uppercase tracking-widest text-accent">Security Verified</span>
+                <div className="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-foreground/40">
+                   <span>Shipping</span>
+                   <span className={cartTotal() >= 50000 ? "text-green-500" : ""}>
+                     {cartTotal() >= 50000 ? "FREE" : "₦2,500"}
+                   </span>
+                </div>
+                <div className="flex justify-between items-end pt-4 border-t border-white/5">
+                   <span className="text-[11px] font-black uppercase tracking-[0.3em]">Total</span>
+                   <span className="text-3xl font-black tracking-tighter">
+                     ₦{(cartTotal() + (cartTotal() >= 50000 || cart.length === 0 ? 0 : 2500)).toLocaleString()}
+                   </span>
+                </div>
+                
+                <div className="flex justify-between items-center bg-white/5 p-4 rounded-xl border border-white/5 mt-2">
+                   <span className="text-[8px] font-black uppercase tracking-widest text-accent">Payment Secured</span>
                    <div className="flex gap-1.5">
                       {[1,2,3].map(i => <div key={i} className="w-1 h-1 bg-accent rounded-full animate-pulse" />)}
                    </div>
