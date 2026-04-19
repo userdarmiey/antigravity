@@ -14,8 +14,8 @@ const outfit = Outfit({ subsets: ["latin"], variable: "--font-sans" });
 const spaceMono = Space_Mono({ weight: ["400", "700"], subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
-  title: "Fit and Fab | Premium Streetwear",
-  description: "Celestial-themed premium streetwear. High-performance, minimalist E-commerce prioritizing brand storytelling and exclusive drops.",
+  title: "Gestar | Premium Streetwear Drop",
+  description: "Made to Fit. Made to Stand Out. Exclusive premium streetwear drop including the Archive Hoodie and the Vault collections.",
 };
 
 export default function RootLayout({
