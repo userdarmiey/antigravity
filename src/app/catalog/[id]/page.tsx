@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useStore } from '@/store/useStore';
 import Link from 'next/link';
 import { playPopSound } from '@/utils/sound';
+import ProductGrid from '@/components/products/ProductGrid';
 
 export default function ProductDetailPage({ params }: { params: { id: string } }) {
   const [product, setProduct] = useState<Product | null>(null);
