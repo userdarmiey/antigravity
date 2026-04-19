@@ -85,7 +85,7 @@ export default function TrackOrder() {
               type="submit"
               className="w-full mt-4 py-4 bg-foreground text-background font-black text-sm uppercase tracking-[0.2em] rounded-xl hover:bg-accent hover:text-white transition-all shadow-[0_5px_20px_rgba(0,0,0,0.1)] active:scale-[0.98]"
             >
-              Scan Package
+              Track Now
             </button>
           </form>
         )}

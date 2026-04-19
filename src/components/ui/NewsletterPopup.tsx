@@ -60,9 +60,9 @@ export default function NewsletterPopup() {
                 <Mail className="w-8 h-8 text-accent" />
              </div>
 
-             <h2 className="text-3xl font-black text-foreground uppercase tracking-tighter mb-4">Join the Echelon</h2>
+             <h2 className="text-3xl font-black text-foreground uppercase tracking-tighter mb-4">Join the Fam</h2>
              <p className="text-foreground/60 text-sm leading-relaxed mb-10 max-w-xs">
-                Subscribe to receive early drops, exclusive archive access, and technical updates from the void.
+                Sign up to get first dibs on our newest drops and exclusive deals sent right to you.
              </p>
 
              <form onSubmit={handleSubscribe} className="w-full flex flex-col gap-4">
@@ -76,12 +76,12 @@ export default function NewsletterPopup() {
                   type="submit"
                   className="w-full py-5 bg-foreground text-background font-black uppercase text-xs tracking-[0.4em] rounded-2xl hover:bg-accent hover:text-white transition-all shadow-xl shadow-accent/10 active:scale-[0.98]"
                 >
-                  Synchronize
+                  Sign Me Up
                 </button>
              </form>
 
              <p className="mt-8 text-[9px] font-bold text-foreground/20 uppercase tracking-widest leading-loose">
-               No spam. Only essential data. <br/> Unsubscribe at any time.
+               No spam. Only the good stuff. <br/> Leave anytime you want.
              </p>
           </motion.div>
         </div>

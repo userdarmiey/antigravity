@@ -19,14 +19,14 @@ export default function ContactPage() {
             className="flex items-center gap-3 mb-4"
           >
             <div className="w-2 h-2 rounded-full bg-accent animate-pulse shadow-[0_0_10px_var(--accent)]" />
-            <span className="text-accent font-mono text-[10px] tracking-[0.4em] font-black uppercase">Get in Touch</span>
+            <span className="text-accent font-mono text-[10px] tracking-[0.4em] font-black uppercase">Contact Us</span>
           </motion.div>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-6xl md:text-8xl font-black tracking-tighter uppercase leading-none"
           >
-            Contact <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">Us</span>
+            Contact
           </motion.h1>
         </div>
 

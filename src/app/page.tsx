@@ -8,7 +8,7 @@ import { motion, useScroll, useSpring } from "framer-motion";
 import LaunchCountdown from "@/components/ui/Countdown";
 
 export default function Home() {
-  const subtext = "Primal aesthetics from the edge of the universe. A distilled echelon of streetwear materiality.";
+  const subtext = "Premium streetwear that fits you perfectly. We make clothes that make you look good and stand out from everyone else.";
 
   // Typewriter Variants
   const container = {

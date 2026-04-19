@@ -32,23 +32,23 @@ export default function CookieConsent() {
               <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center">
                  <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
               </div>
-              <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground">Protocol: Cookies</h4>
+              <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground">We Use Cookies</h4>
             </div>
             <p className="text-foreground/60 text-xs leading-relaxed tracking-wide">
-              This system uses tracking identifiers to optimize your experience within the Fit and Fab archive. By continuing, you authorize data collection.
+              We use cookies to make your shopping experience better and to show you things you'll like. 
             </p>
             <div className="flex gap-3">
               <button 
                 onClick={handleAccept}
                 className="flex-1 py-3 bg-foreground text-background text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:bg-accent hover:text-white transition-all shadow-xl active:scale-95"
               >
-                Authorize
+                That's Fine
               </button>
               <button 
                 onClick={() => setIsVisible(false)}
                 className="px-6 py-3 border border-border text-foreground/40 text-[10px] font-bold uppercase tracking-[0.2em] rounded-xl hover:text-foreground transition-all"
               >
-                Decline
+                No Thanks
               </button>
             </div>
           </div>
