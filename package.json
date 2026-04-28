@@ -1,5 +1,5 @@
 {
-  "name": "gestar",
+  "name": "fit-and-fab",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -16,6 +16,9 @@
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
+    "react-paystack": "^6.0.0",
+    "resend": "^6.12.2",
+    "twilio": "^6.0.0",
     "zustand": "^4.5.7"
   },
   "devDependencies": {

@@ -28,7 +28,7 @@ export default function OrbitPage() {
 
            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
               {[
-                { label: "Points Earned", value: "12,450", sub: "Gestar Tokens" },
+                { label: "Points Earned", value: "12,450", sub: "Fit and Fab Tokens" },
                 { label: "Orders Made", value: "08", sub: "Dispatched & Delivered" },
                 { label: "Exclusive Drops", value: "03", sub: "Early Access Passes" }
               ].map((stat, i) => (

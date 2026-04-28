@@ -8,13 +8,15 @@ import CookieConsent from "@/components/ui/CookieConsent";
 import NewsletterPopup from "@/components/ui/NewsletterPopup";
 import CustomCursor from "@/components/ui/CustomCursor";
 import WhatsAppSupport from "@/components/ui/WhatsAppSupport";
+import { Toast } from "@/components/shared/Toast";
+import LiveActivity from "@/components/LiveActivity";
 import "./globals.css";
 
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-sans" });
 const spaceMono = Space_Mono({ weight: ["400", "700"], subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
-  title: "Gestar | Premium Streetwear Drop",
+  title: "Fit and Fab | Premium Streetwear Drop",
   description: "Made to Fit. Made to Stand Out. Exclusive premium streetwear drop including the Archive Hoodie and the Vault collections.",
 };
 
@@ -32,6 +34,8 @@ export default function RootLayout({
         <NewsletterPopup />
         <CustomCursor />
         <WhatsAppSupport />
+        <Toast />
+        <LiveActivity />
 
         <main className="flex-grow">
           {children}

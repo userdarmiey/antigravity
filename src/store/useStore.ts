@@ -18,6 +18,9 @@ interface AppState {
   setSearchQuery: (query: string) => void;
   cartTotal: () => number;
   clearCart: () => void;
+  notification: { message: string, type: 'success' | 'error' | 'info' } | null;
+  showNotification: (message: string, type?: 'success' | 'error' | 'info') => void;
+  hideNotification: () => void;
 }
 
 export const useStore = create<AppState>((set, get) => ({
@@ -68,4 +71,15 @@ export const useStore = create<AppState>((set, get) => ({
   cartTotal: () => get().cart.reduce((total, item) => total + (item.price * item.quantity), 0),
 
   clearCart: () => set({ cart: [] }),
+
+  notification: null,
+
+  showNotification: (message, type = 'info') => {
+    set({ notification: { message, type } });
+    setTimeout(() => {
+      set({ notification: null });
+    }, 5000);
+  },
+
+  hideNotification: () => set({ notification: null }),
 }));

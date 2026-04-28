@@ -8,7 +8,7 @@ import LaunchCountdown from "@/components/ui/Countdown";
 import ProcessAnimation from "@/components/ui/ProcessAnimation";
 
 export default function Home() {
-  const subtext = "Premium streetwear that fits you perfectly. We make clothes that make you look good and stand out from everyone else.";
+  const subtext = "Clothes that fit you well and make you look good.";
 
   // Typewriter Variants
   const container = {
@@ -42,6 +42,27 @@ export default function Home() {
 
   return (
     <div className="w-full bg-[#050505] text-[#FAFAFA] overflow-x-hidden relative transition-colors duration-500">
+      {/* ANNOUNCEMENT TICKER */}
+      <div className="w-full bg-accent text-white py-1.5 overflow-hidden flex items-center relative z-[110]">
+        <motion.div 
+          animate={{ x: [0, -1000] }} 
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          className="flex whitespace-nowrap gap-12 text-[9px] font-black uppercase tracking-[0.3em]"
+        >
+          <span>Free shipping in Lagos 🚀</span>
+          <span>Pay with Paystack to get 5% off ✨</span>
+          <span>New Clothes Out Now ⚡</span>
+          <span>Free shipping in Lagos 🚀</span>
+          <span>Pay with Paystack to get 5% off ✨</span>
+          <span>New Clothes Out Now ⚡</span>
+        </motion.div>
+      </div>
+
+      {/* LIVE VISITORS COUNTER */}
+      <div className="absolute top-16 right-8 z-50 hidden md:flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full scale-90">
+         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+         <span className="text-[10px] font-black uppercase tracking-widest text-foreground/60">Live Now</span>
+      </div>
       {/* GLOBAL GRAIN OVERLAY */}
       <div className="fixed inset-0 z-[100] pointer-events-none opacity-[0.04] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
       
@@ -51,9 +72,9 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <motion.div 
             initial={{ scale: 1.1, opacity: 0 }}
-            animate={{ scale: 1, opacity: 0.4 }}
-            transition={{ duration: 2, ease: "easeOut" }}
-            className="absolute inset-0 bg-[url('/streetwear_hero_model_1776012629243.png')] bg-cover bg-center contrast-125"
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="absolute inset-0 bg-[url('/fit_and_fab_hero_new.png')] bg-cover bg-center brightness-125"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,var(--background)_80%)]" />
@@ -73,7 +94,7 @@ export default function Home() {
                transition={{ delay: 0.5 }}
                className="text-[10px] tracking-[0.8em] uppercase text-accent font-bold mb-4"
              >
-               Premium Streetwear
+               Best Streetwear
              </motion.span>
           </div>
 
@@ -85,7 +106,7 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="inline-block text-5xl md:text-7xl"
               >
-                Made to Fit.
+                Wear the vibe.
               </motion.span>
             </span>
             <span className="relative inline-block overflow-hidden mt-2 md:-mt-8">
@@ -95,7 +116,7 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="inline-block text-5xl md:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-accent via-blue-400 to-foreground"
               >
-                Made to Stand Out.
+                Stay fab.
               </motion.span>
             </span>
           </h1>
@@ -134,9 +155,9 @@ export default function Home() {
         <div className="max-w-[1700px] mx-auto px-6">
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
              {[
-               { name: "Archive Hoodie", desc: "Heavyweight Boxy Fit", image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=800", color: "from-blue-500/20" },
-               { name: "Street Tees", desc: "Premium Cotton Drops", image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=800", color: "from-accent/20" },
-               { name: "The Vault", desc: "Old School Grails", image: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&q=80&w=800", color: "from-purple-500/20" }
+               { name: "Best Hoodie", desc: "Heavy cotton fit", image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=800", color: "from-blue-500/20" },
+               { name: "New Tees", desc: "Best Cotton Shirts", image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=800", color: "from-accent/20" },
+               { name: "Classic Vault", desc: "Old-school style", image: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&q=80&w=800", color: "from-purple-500/20" }
              ].map((cat, i) => (
                <motion.div 
                  key={i}
@@ -181,7 +202,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col items-center text-center mb-20">
             <span className="text-accent text-[10px] uppercase tracking-[0.4em] font-black mb-4">Reviews</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tight">What the Fam Says</h2>
+            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tight">What people Say</h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -218,13 +239,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* REFERRAL CONTEST SECTION */}
+      {/* REFER AND WIN */}
       <section className="py-24 border-t border-border relative z-10 overflow-hidden bg-surface/5">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col items-center text-center mb-20">
-            <span className="text-accent text-[10px] uppercase tracking-[0.5em] font-black mb-4">Community Contest</span>
+            <span className="text-accent text-[10px] uppercase tracking-[0.5em] font-black mb-4">Invite Friends</span>
             <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none italic">Share <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">&</span> Win</h2>
-            <p className="text-nebula text-lg mt-8 max-w-xl">Invite your friends to the fam and win free clothes every month. It's that simple.</p>
+            <p className="text-nebula text-lg mt-8 max-w-xl">Invite your friends to the shop and win free clothes every month.</p>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -298,7 +319,7 @@ export default function Home() {
             Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">Story</span>
           </h2>
           <p className="text-nebula text-lg md:text-2xl leading-relaxed max-w-4xl opacity-90 font-medium">
-            Style is an orbit, not a destination. <span className="font-bold text-foreground">GESTAR</span> is engineered for those who refuse to blend in. We craft premium silhouettes that define the modern street landscape. No compromises, just pure stellar aesthetics for the city.
+            Style is a journey. <span className="font-bold text-foreground">FIT AND FAB</span> is made for you. We make clothes that fit your lifestyle and make you look great every day. No stress, just great style for everyone.
           </p>
         </motion.div>
       </motion.section>

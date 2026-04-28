@@ -74,7 +74,7 @@ export default function CollectionPage({ params }: { params: { slug: string } })
              <span className="text-foreground/80 text-xs font-bold uppercase tracking-[0.2em] animate-pulse">Loading Collection...</span>
           </div>
         ) : products.length > 0 ? (
-          <div className="flex flex-wrap gap-4 md:gap-12">
+          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-12">
             {products.map(product => (
               <ProductCard key={product.id} product={product} />
             ))}

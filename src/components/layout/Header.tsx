@@ -1,17 +1,34 @@
 "use client";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useStore } from '@/store/useStore';
+import { createClient } from '@/utils/supabase/client';
 
 export default function Header() {
   const { toggleCart, cart, searchQuery, setSearchQuery } = useStore();
+  const [user, setUser] = useState<any>(null);
   const cartSize = cart.reduce((acc, item) => acc + item.quantity, 0);
+  const supabase = createClient();
+
+  useEffect(() => {
+    const getUser = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      setUser(session?.user ?? null);
+    };
+    getUser();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, [supabase.auth]);
 
   return (
     <header className="w-full border-b border-border sticky top-0 bg-background/40 backdrop-blur-3xl z-50 transition-colors duration-500">
       <div className="max-w-[1600px] mx-auto px-8 h-24 flex items-center justify-between gap-8">
         <Link href="/" className="font-sans font-black text-xl md:text-2xl tracking-[0.1em] uppercase text-foreground cursor-pointer hover:text-accent transition-colors shrink-0">
-          GESTAR
+          FIT AND FAB
         </Link>
         
         {/* Real-time Reactive Search Bar */}
@@ -44,6 +61,28 @@ export default function Header() {
               {cartSize}
             </span>
           </button>
+
+          {user ? (
+            <Link 
+              href="/dashboard"
+              className="w-10 h-10 rounded-full border border-accent/30 overflow-hidden hover:border-accent transition-all flex items-center justify-center bg-surface group"
+            >
+              {user.user_metadata?.avatar_url ? (
+                <img src={user.user_metadata.avatar_url} alt="Profile" className="w-full h-full object-cover" />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-accent text-white font-black text-xs">
+                  {user.email?.[0].toUpperCase()}
+                </div>
+              )}
+            </Link>
+          ) : (
+            <Link 
+              href="/login"
+              className="text-xs font-black uppercase tracking-widest text-foreground/40 hover:text-accent transition-colors"
+            >
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </header>

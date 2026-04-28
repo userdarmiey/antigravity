@@ -2,25 +2,44 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, X } from 'lucide-react';
+import { useStore } from '@/store/useStore';
 
 export default function NewsletterPopup() {
   const [isVisible, setIsVisible] = useState(false);
+  const { showNotification } = useStore();
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 5000); // 5 seconds delay
-    return () => clearTimeout(timer);
+    const isClosed = localStorage.getItem('newsletter-dismissed');
+    if (!isClosed) {
+      const timer = setTimeout(() => setIsVisible(true), 8000); // 8 seconds delay
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   const handleClose = () => {
-    sessionStorage.setItem('newsletter-closed', 'true');
+    localStorage.setItem('newsletter-dismissed', 'true');
     setIsVisible(false);
   };
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    localStorage.setItem('newsletter-subscribed', 'true');
-    setIsVisible(false);
-    alert("Welcome to the Archive. Access granted.");
+    const emailInput = (e.target as any).querySelector('input[type="email"]');
+    const email = emailInput?.value;
+
+    if (email) {
+      try {
+        await fetch('/api/newsletter', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+        localStorage.setItem('newsletter-dismissed', 'true');
+        setIsVisible(false);
+        showNotification("Welcome to the Fam!", "success");
+      } catch (err) {
+        console.error(err);
+      }
+    }
   };
 
   return (
